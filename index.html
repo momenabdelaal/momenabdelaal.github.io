@@ -520,32 +520,40 @@
         .app-image {
             width: 100%;
             height: 200px;
-            background-size: cover;
-            background-position: center;
             position: relative;
+            overflow: hidden;
+            border-radius: 8px 8px 0 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
-        .app-image::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            height: 50%;
-            background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.7));
+        .app-image[style*="background-image"] {
+            background-position: center;
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-color: #ffffff;
+        }
+
+        .app-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            object-position: center;
+            display: block;
+            background-color: #ffffff;
         }
 
         .app-badge {
             position: absolute;
-            top: 1rem;
-            right: 1rem;
-            background: rgba(255, 255, 255, 0.9);
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            color: var(--primary-color);
-            backdrop-filter: blur(4px);
+            top: 10px;
+            right: 10px;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            z-index: 1;
         }
 
         .app-content {
@@ -1389,7 +1397,8 @@
                 <div class="apps-grid">
                     <!-- Smart Schools -->
                     <div class="app-card" data-aos="fade-up">
-                        <div class="app-image" style="background-image: url('assets/smart-schools.jpg');">
+                        <div class="app-image">
+                            <img src="assets/smart-schools.png" alt="Smart Schools - Educational Management System" loading="lazy">
                             <span class="app-badge">20K+ Downloads</span>
                         </div>
                         <div class="app-content">
@@ -1415,7 +1424,7 @@
 
                     <!-- qAuth Attendance -->
                     <div class="app-card" data-aos="fade-up">
-                        <div class="app-image" style="background-image: url('assets/qauth.jpg');"></div>
+                        <div class="app-image" style="background-image: url('assets/qauth.png');"></div>
                         <div class="app-content">
                             <div class="app-header">
                                 <h3 class="app-title">qAuth Attendance</h3>
@@ -1433,10 +1442,10 @@
 
                     <!-- Amar Tick Suite -->
                     <div class="app-card" data-aos="fade-up">
-                        <div class="app-image" style="background-image: url('assets/amar-tick.jpg');"></div>
+                        <div class="app-image" style="background-image: url('assets/amartick.png');"></div>
                         <div class="app-content">
                             <div class="app-header">
-                                <h3 class="app-title">Amar Tick Suite</h3>
+                                <h3 class="app-title">Amar Tick </h3>
                             </div>
                             <p class="app-description">E-commerce platform with customer and supplier versions, featuring secure payment integration through STC gateway.</p>
                             <div class="app-tags">
@@ -1450,10 +1459,10 @@
 
                     <!-- qPMO Suite -->
                     <div class="app-card" data-aos="fade-up">
-                        <div class="app-image" style="background-image: url('assets/qpmo.jpg');"></div>
+                        <div class="app-image" style="background-image: url('assets/qpmo.png');"></div>
                         <div class="app-content">
                             <div class="app-header">
-                                <h3 class="app-title">qPMO Suite</h3>
+                                <h3 class="app-title">qPMO </h3>
                             </div>
                             <p class="app-description">Comprehensive project management platform with separate apps for employees and contractors, built with modern architecture patterns.</p>
                             <div class="app-tags">
@@ -1466,10 +1475,12 @@
 
                     <!-- ALKhalil Suite -->
                     <div class="app-card" data-aos="fade-up">
-                        <div class="app-image" style="background-image: url('assets/alkhalil.jpg');"></div>
+                        <div class="app-image">
+                            <img src="assets/alkhalilgroup.jpg" alt="ALKhalil Suite - Arabic Language Processing" loading="lazy">
+                        </div>
                         <div class="app-content">
                             <div class="app-header">
-                                <h3 class="app-title">ALKhalil Suite</h3>
+                                <h3 class="app-title">ALKhalil </h3>
                             </div>
                             <p class="app-description">Project management system with specialized interfaces for employees and customers.</p>
                             <div class="app-tags">
@@ -1482,7 +1493,7 @@
 
                     <!-- Alaam Rakmy -->
                     <div class="app-card" data-aos="fade-up">
-                        <div class="app-image" style="background-image: url('assets/alaam-rakmy.jpg');"></div>
+                            <div class="app-image" style="background-image: url('assets/alaamrakmy.png');"></div>
                         <div class="app-content">
                             <div class="app-header">
                                 <h3 class="app-title">Alaam Rakmy</h3>
@@ -1524,10 +1535,10 @@
                 <div class="apps-grid">
                     <!-- Klsh Suite -->
                     <div class="app-card" data-aos="fade-up">
-                        <div class="app-image" style="background-image: url('assets/klsh.jpg');"></div>
+                        <div class="app-image" style="background-image: url('assets/klsh.png');"></div>
                         <div class="app-content">
                             <div class="app-header">
-                                <h3 class="app-title">Klsh Suite</h3>
+                                <h3 class="app-title">Klsh </h3>
                             </div>
                             <p class="app-description">Comprehensive service platform with separate client and provider apps, featuring real-time updates and location services.</p>
                             <div class="app-tags">
@@ -1542,7 +1553,7 @@
 
                     <!-- RoknEltayb -->
                     <div class="app-card" data-aos="fade-up">
-                        <div class="app-image" style="background-image: url('assets/rokneltayb.jpg');"></div>
+                        <div class="app-image" style="background-image: url('assets/rokn-eltayb.png');"></div>
                         <div class="app-content">
                             <div class="app-header">
                                 <h3 class="app-title">RoknEltayb</h3>
@@ -1559,10 +1570,10 @@
 
                     <!-- qPMO Suite iOS -->
                     <div class="app-card" data-aos="fade-up">
-                        <div class="app-image" style="background-image: url('assets/qpmo-ios.jpg');"></div>
+                        <div class="app-image" style="background-image: url('assets/qpmo.png');"></div>
                         <div class="app-content">
                             <div class="app-header">
-                                <h3 class="app-title">qPMO Suite for iOS</h3>
+                                <h3 class="app-title">qPMO </h3>
                             </div>
                             <p class="app-description">iOS version of the project management platform, built with VIPER architecture for optimal performance and maintainability.</p>
                             <div class="app-tags">
