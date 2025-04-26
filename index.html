@@ -10,12 +10,7 @@
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
-    <script type="text/javascript">
-        (function() {
-            emailjs.init("YOUR_PUBLIC_KEY");
-        })();
-    </script>
+
     <style>
         :root {
             --primary-color: #0a66c2;
@@ -25,6 +20,10 @@
             --bg-primary: #ffffff;
             --bg-secondary: #f8fafc;
             --transition-speed: 0.3s;
+            --glass-bg: rgba(255, 255, 255, 0.95);
+            --glass-border: rgba(255, 255, 255, 0.18);
+            --glass-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+            --card-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
         }
 
         * {
@@ -60,7 +59,7 @@
 
         /* Header Styles */
         header {
-            background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+            background: linear-gradient(135deg, #f0f7ff 0%, #ffffff 100%);
             min-height: 100vh;
             display: flex;
             flex-direction: column;
@@ -69,6 +68,24 @@
             position: relative;
             padding: 2rem;
             text-align: center;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            width: 150%;
+            height: 150%;
+            background: radial-gradient(circle, var(--primary-color) 0%, transparent 70%);
+            opacity: 0.05;
+            top: -25%;
+            left: -25%;
+            animation: rotate 20s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
         }
 
         .header-content {
@@ -84,23 +101,57 @@
             height: 180px;
             border-radius: 50%;
             margin-bottom: 2rem;
-            border: 4px solid var(--primary-color);
+            border: 4px solid var(--glass-border);
             padding: 4px;
-            background: white;
-            transition: transform 0.3s ease;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            background: var(--glass-bg);
+            transition: all 0.5s ease;
+            box-shadow: var(--glass-shadow);
+            position: relative;
+        }
+
+        .profile-image::after {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            right: -10px;
+            bottom: -10px;
+            border-radius: 50%;
+            border: 2px solid var(--primary-color);
+            opacity: 0;
+            transition: all 0.5s ease;
         }
 
         .profile-image:hover {
-            transform: scale(1.05);
+            transform: scale(1.02);
+        }
+
+        .profile-image:hover::after {
+            opacity: 1;
+            transform: scale(1.1);
         }
 
         header h1 {
-            font-size: 3rem;
+            font-size: 3.5rem;
             font-weight: 700;
-            color: var(--text-primary);
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
             margin-bottom: 1rem;
             letter-spacing: -1px;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         header p {
@@ -157,13 +208,21 @@
 
         /* Navbar Styles */
         .navbar {
-            background: rgba(255, 255, 255, 0.98);
+            background: var(--glass-bg);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: 1px solid var(--glass-border);
             padding: 1rem 2rem;
             position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
+            top: 1rem;
+            left: 50%;
+            transform: translateX(-50%);
+            right: auto;
             z-index: 1000;
+            width: 90%;
+            max-width: 1200px;
+            border-radius: 16px;
+            box-shadow: var(--glass-shadow);
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
             backdrop-filter: blur(10px);
             transition: all 0.3s ease;
@@ -302,13 +361,22 @@
         }
 
         .skill-category {
-            background: white;
+            background: var(--glass-bg);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            margin-bottom: 2rem;
             padding: 2rem;
-            border-radius: 12px;
-            box-shadow: 0 8px 24px rgba(10, 102, 194, 0.08);
+            border-radius: 16px;
+            border: 1px solid var(--glass-border);
+            box-shadow: var(--glass-shadow);
             transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
+        }
+
+        .skill-category:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--card-shadow);
         }
 
         .skill-category::before {
@@ -1176,6 +1244,116 @@
                 min-height: 700px;
             }
         }
+        /* Contact Form Styles */
+        .contact-section {
+            padding: 5rem 2rem;
+            background: var(--bg-secondary);
+        }
+
+        .contact-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .contact-form {
+            background: var(--glass-bg);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: 1px solid var(--glass-border);
+            padding: 2.5rem;
+            border-radius: 16px;
+            box-shadow: var(--glass-shadow);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+            font-weight: 500;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border: 1px solid var(--glass-border);
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
+            color: var(--text-primary);
+            transition: all 0.3s ease;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(10, 102, 194, 0.1);
+        }
+
+        textarea.form-control {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 0.75rem 2rem;
+            border-radius: 8px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .submit-btn:hover {
+            background: var(--secondary-color);
+            transform: translateY(-2px);
+        }
+
+        .submit-btn:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+        }
+
+        /* Notification Styles */
+        .notification {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            background: var(--glass-bg);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: 1px solid var(--glass-border);
+            box-shadow: var(--glass-shadow);
+            transform: translateY(100px);
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+
+        .notification.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .notification.success {
+            border-left: 4px solid #10B981;
+            color: #10B981;
+        }
+
+        .notification.error {
+            border-left: 4px solid #EF4444;
+            color: #EF4444;
+        }
     </style>
 </head>
 <body>
@@ -1215,7 +1393,7 @@
                 <li><a href="#published-apps">Projects</a></li>
                 <li><a href="#education">Education</a></li>
                 <li><a href="#certifications">Certifications</a></li>
-                <li><a href="#contact">Contact</a></li>
+<!--                <li><a href="#contact">Contact</a></li>-->
             </ul>
         </div>
     </nav>
@@ -1746,82 +1924,21 @@
                 </div>
             </div>
         </section>
+<!--        <section id="contact" class="contact-section">-->
+<!--            <div class="contact-container">-->
+<!--                <h2 class="section-title" data-aos="fade-up">Get in Touch</h2>-->
+<!--                <p class="section-description" data-aos="fade-up" data-aos-delay="100">-->
+<!--                    Have a question or want to work together? Feel free to reach out!-->
+<!--                </p>-->
+<!--                <div class="google-form-container" data-aos="fade-up" data-aos-delay="200">-->
+<!--                    &lt;!&ndash; Replace the src URL with your actual Google Form URL when you have it &ndash;&gt;-->
+<!--                    <iframe class="google-form-frame" src="https://docs.google.com/forms/d/e/1FAIpQLSdAtaKyIEYFF1tC5-KIgeJbmE0aKccQ2iBpDb03iObgp0i2wg/viewform?embedded=true">-->
+<!--                        Loading...-->
+<!--                    </iframe>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </section>-->
 
-        <section id="contact" class="section">
-            <div class="container">
-                <h2 class="section-title" data-aos="fade-up">Get in Touch</h2>
-
-                <div class="contact-info" data-aos="fade-up">
-                    <p>Feel free to reach out for collaborations, opportunities, or just to say hello!</p>
-                    <div class="social-links">
-                        <a href="mailto:bibomomen@gmail.com" class="social-link" title="Email">
-                            <i class="fas fa-envelope"></i>
-                        </a>
-                        <a href="https://www.linkedin.com/in/your-profile" class="social-link" title="LinkedIn">
-                            <i class="fab fa-linkedin"></i>
-                        </a>
-                        <a href="https://github.com/your-profile" class="social-link" title="GitHub">
-                            <i class="fab fa-github"></i>
-                        </a>
-                    </div>
-                </div>
-
-                <div class="contact-form" data-aos="fade-up">
-                    <form action="https://api.web3forms.com/submit" method="POST" class="contact-form-content">
-                        <!-- Add your access key here after signing up at Web3Forms.com -->
-                        <input type="hidden" name="access_key" value="YOUR-ACCESS-KEY">
-                        <input type="hidden" name="subject" value="New Contact Form Submission">
-                        <input type="hidden" name="from_name" value="Portfolio Website">
-                        <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
-
-                        <div class="form-group">
-                            <label for="name" class="form-label">
-                                <i class="fas fa-user"></i> Name
-                            </label>
-                            <input type="text" id="name" name="name" class="form-control" required>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="email" class="form-label">
-                                <i class="fas fa-envelope"></i> Email
-                            </label>
-                            <input type="email" id="email" name="email" class="form-control" required>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="subject" class="form-label">
-                                <i class="fas fa-heading"></i> Subject
-                            </label>
-                            <input type="text" id="subject" name="subject" class="form-control" required>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="message" class="form-label">
-                                <i class="fas fa-comment"></i> Message
-                            </label>
-                            <textarea id="message" name="message" class="form-control" required rows="5"></textarea>
-                        </div>
-
-                        <div class="submit-wrapper">
-                            <button type="submit" class="submit-btn">
-                                <i class="fas fa-paper-plane"></i>
-                                Send Message
-                            </button>
-                            <div class="submit-status"></div>
-                        </div>
-                    </form>
-                </div>
-
-                <div class="contact-button-wrapper" data-aos="fade-up">
-                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSdAtaKyIEYFF1tC5-KIgeJbmE0aKccQ2iBpDb03iObgp0i2wg/viewform"
-                       target="_blank"
-                       class="contact-button">
-                        <i class="fas fa-external-link-alt"></i>
-                        Open Contact Form
-                    </a>
-                </div>
-            </div>
-        </section>
     </main>
     <script>
         // Initialize AOS
@@ -1888,158 +2005,35 @@
         createParticles();
         animateTimeline();
     </script>
-    <script>
-        // Initialize skill bars animation
-        function initSkillBars() {
-            const skillBars = document.querySelectorAll('.skill-bar');
-
-            const animateSkillBar = (bar) => {
-                const percentage = bar.getAttribute('data-percentage');
-                bar.style.width = percentage + '%';
-            };
-
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        animateSkillBar(entry.target);
-                        observer.unobserve(entry.target);
-                    }
-                });
-            }, { threshold: 0.5 });
-
-            skillBars.forEach(bar => {
-                observer.observe(bar);
-            });
+    <style>
+        /* Contact Section Styles */
+        .contact-section {
+            padding: 5rem 2rem;
+            background: var(--bg-secondary);
         }
 
-        // Call the function when DOM is loaded
-        document.addEventListener('DOMContentLoaded', initSkillBars);
-    </script>
-    <script>
-        const form = document.querySelector('.contact-form-content');
-        const submitBtn = form.querySelector('.submit-btn');
-        const submitStatus = form.querySelector('.submit-status');
+        .contact-container {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
 
-        form.addEventListener('submit', async (e) => {
-            e.preventDefault();
-            submitBtn.disabled = true;
-            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
-
-            try {
-                const response = await fetch(form.action, {
-                    method: 'POST',
-                    body: new FormData(form)
-                });
-
-                const data = await response.json();
-
-                if (data.success) {
-                    submitStatus.className = 'submit-status success';
-                    submitStatus.textContent = 'Message sent successfully!';
-                    form.reset();
-                } else {
-                    throw new Error(data.message || 'Something went wrong');
-                }
-            } catch (error) {
-                submitStatus.className = 'submit-status error';
-                submitStatus.textContent = error.message;
-            } finally {
-                submitBtn.disabled = false;
-                submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Send Message';
-                setTimeout(() => {
-                    submitStatus.textContent = '';
-                }, 5000);
-            }
-        });
-    </script>
-    <style>
-        .contact-form {
+        .google-form-container {
+            margin-top: 2rem;
             background: var(--bg-primary);
             border-radius: 12px;
-            padding: 2rem;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-            max-width: 640px;
-            margin: 0 auto;
+            box-shadow: var(--card-shadow);
+            overflow: hidden;
         }
 
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-
-        .form-label {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            margin-bottom: 0.5rem;
-            color: var(--text-primary);
-            font-weight: 500;
-        }
-
-        .form-label i {
-            color: var(--primary-color);
-        }
-
-        .form-control {
+        .google-form-frame {
             width: 100%;
-            padding: 0.75rem 1rem;
-            border: 1px solid rgba(0, 0, 0, 0.1);
-            border-radius: 8px;
-            background: var(--bg-secondary);
-            color: var(--text-primary);
-            transition: all 0.3s ease;
-        }
-
-        .form-control:focus {
-            outline: none;
-            border-color: var(--primary-color);
-            box-shadow: 0 0 0 3px rgba(10, 102, 194, 0.1);
-        }
-
-        textarea.form-control {
-            resize: vertical;
-        }
-
-        .submit-wrapper {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-
-        .submit-btn {
-            background: var(--primary-color);
-            color: white;
+            height: 800px;
             border: none;
-            padding: 0.75rem 2rem;
-            border-radius: 8px;
-            font-weight: 500;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .submit-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(10, 102, 194, 0.2);
-        }
-
-        .submit-btn:disabled {
-            opacity: 0.7;
-            cursor: not-allowed;
-        }
-
-        .submit-status {
-            font-size: 0.9rem;
-        }
-
-        .submit-status.success {
-            color: #10B981;
-        }
-
-        .submit-status.error {
-            color: #EF4444;
         }
     </style>
+
+    <!-- Contact Section with Google Form -->
+   
 </body>
 </html>
