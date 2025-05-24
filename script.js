@@ -162,6 +162,16 @@ document.addEventListener('DOMContentLoaded', () => {
         easing: 'ease-out-cubic'
     });
 
+    // Add scroll-to-top functionality for nav brand
+    const navBrand = document.querySelector('.nav-brand');
+    navBrand.addEventListener('click', (e) => {
+        e.preventDefault();
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
+
     initNavbar();
     createEnhancedParticles();
     animateSkillBars();
