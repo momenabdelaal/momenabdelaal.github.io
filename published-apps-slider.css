@@ -1,0 +1,129 @@
+/* Published Apps Slider Styles */
+.apps-tabs {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2rem;
+    gap: 1rem;
+}
+
+.apps-tab {
+    padding: 0.75rem 1.5rem;
+    border-radius: 50px;
+    background: rgba(14, 165, 233, 0.1);
+    color: var(--text-primary);
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 1px solid transparent;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.apps-tab i {
+    font-size: 1.2rem;
+}
+
+.apps-tab.active {
+    background: var(--primary-color);
+    color: white;
+    box-shadow: 0 10px 20px rgba(14, 165, 233, 0.2);
+}
+
+.apps-tab:hover:not(.active) {
+    background: rgba(14, 165, 233, 0.2);
+    transform: translateY(-3px);
+}
+
+/* Enhanced Slider for RTL swiping */
+.apps-slider-container {
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 2rem;
+    width: 100%;
+}
+
+.apps-slider {
+    display: flex;
+    flex-direction: row-reverse; /* For right-to-left sliding */
+    transition: transform 0.5s ease;
+    width: 300%; /* For 3 slides (Android, iOS, Flutter) */
+}
+
+.apps-slide {
+    min-width: 33.333%; /* Each slide takes 1/3 of the slider width */
+    padding: 1rem;
+    box-sizing: border-box;
+}
+
+.apps-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+    perspective: 1000px;
+}
+
+.slider-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+.slider-arrow {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: rgba(14, 165, 233, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    color: var(--text-primary);
+    font-size: 1.2rem;
+}
+
+.slider-arrow:hover {
+    background: var(--primary-color);
+    color: white;
+    transform: scale(1.1);
+}
+
+.slider-dots {
+    display: flex;
+    justify-content: center;
+    gap: 0.75rem;
+    margin-top: 1rem;
+}
+
+.slider-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: rgba(14, 165, 233, 0.2);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.slider-dot.active {
+    background: var(--primary-color);
+    transform: scale(1.2);
+}
+
+/* For mobile responsiveness */
+@media (max-width: 768px) {
+    .apps-slider {
+        width: 300%; /* Keep the same width for 3 slides */
+    }
+    
+    .apps-slide {
+        min-width: 100%; /* Each slide takes full width on mobile */
+    }
+    
+    .apps-grid {
+        grid-template-columns: 1fr; /* Single column on mobile */
+    }
+}
