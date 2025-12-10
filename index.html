@@ -21,6 +21,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link href="responsive-header.css" rel="stylesheet">
+    <link href="slider.css" rel="stylesheet">
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
@@ -718,6 +719,82 @@
 
         .icon-link:hover::before {
             opacity: 1;
+        }
+
+        /* Enhanced CV Download Icon */
+        .cv-download {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)) !important;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            animation: cvPulse 2s ease-in-out infinite;
+            position: relative;
+        }
+
+        .cv-download::after {
+            content: 'CV';
+            position: absolute;
+            bottom: -25px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.7rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            background: rgba(14, 165, 233, 0.1);
+            padding: 0.2rem 0.5rem;
+            border-radius: 10px;
+            white-space: nowrap;
+            opacity: 0;
+            transition: all 0.3s ease;
+            pointer-events: none;
+        }
+
+        .cv-download:hover::after {
+            opacity: 1;
+            bottom: -30px;
+        }
+
+        .cv-download i {
+            color: white !important;
+            font-size: 1.3rem;
+            animation: downloadBounce 1.5s ease-in-out infinite;
+        }
+
+        .cv-download:hover {
+            transform: translateY(-8px) scale(1.1);
+            box-shadow: 0 15px 35px rgba(14, 165, 233, 0.4);
+            animation: none;
+        }
+
+        .cv-download:hover i {
+            animation: none;
+            transform: scale(1.1);
+        }
+
+        @keyframes cvPulse {
+            0%, 100% {
+                box-shadow: 0 0 0 0 rgba(14, 165, 233, 0.7);
+            }
+            50% {
+                box-shadow: 0 0 0 10px rgba(14, 165, 233, 0);
+            }
+        }
+
+        @keyframes downloadBounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-3px);
+            }
+        }
+
+        body:not(.dark-theme) .cv-download {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)) !important;
+            border: 2px solid rgba(14, 165, 233, 0.3);
+        }
+
+        body:not(.dark-theme) .cv-download::after {
+            color: var(--primary-color);
+            background: rgba(14, 165, 233, 0.15);
         }
 
         .scroll-down-indicator {
@@ -1859,16 +1936,20 @@
         }
 
         .app-header {
-            margin-bottom: 1.25rem;
+            margin-bottom: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
         }
 
         .app-title {
             font-size: 1.4rem;
             font-weight: 700;
             color: var(--primary-color);
-            margin-bottom: 0.75rem;
+            margin-bottom: 0;
             position: relative;
             display: inline-block;
+            width: fit-content;
         }
 
         .app-title::after {
@@ -1891,9 +1972,10 @@
             display: flex;
             align-items: center;
             gap: 1.25rem;
-            margin-bottom: 1.25rem;
+            margin-bottom: 0;
             color: var(--text-secondary);
             font-size: 0.9rem;
+            flex-wrap: wrap;
         }
 
         .app-meta-item {
@@ -2238,29 +2320,198 @@
         .platform-title {
             color: var(--text-primary);
             font-size: 1.5rem;
+            font-weight: 600;
             margin: 3rem 0 2rem;
             display: flex;
             align-items: center;
-            gap: 1rem;
+            gap: 0.75rem;
         }
-
+        
         .platform-title i {
             color: var(--primary-color);
             font-size: 1.75rem;
         }
-
-        .platform-title i.fa-flutter {
-            color: #02569B;  /* Flutter's official blue color */
+        
+        .platform-title .fa-android {
+            color: #3DDC84;  /* Android green */
         }
-
-        .platform-title i.fa-android {
-            color: #3DDC84;  /* Android's official green color */
-        }
-
-        .platform-title i.fa-apple {
+        
+        .platform-title .fa-apple {
             color: #555555;  /* Apple's dark gray */
         }
+        
+        .platform-title .fa-puzzle-piece {
+            color: #8B5CF6;  /* Purple for SDKs */
+            animation: puzzleRotate 3s ease-in-out infinite;
+        }
+        
+        @keyframes puzzleRotate {
+            0%, 100% {
+                transform: rotate(0deg);
+            }
+            25% {
+                transform: rotate(-5deg);
+            }
+            75% {
+                transform: rotate(5deg);
+            }
+        }
+        
+        /* SDK Section Enhancement */
+        .sdk-slider .app-card {
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.05) 0%, rgba(14, 165, 233, 0.05) 100%);
+            border: 1px solid rgba(139, 92, 246, 0.2);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        
+        .sdk-slider .app-card:hover {
+            border-color: rgba(139, 92, 246, 0.4);
+            box-shadow: 0 15px 40px rgba(139, 92, 246, 0.15);
+            transform: translateY(-8px);
+        }
+        
+        .sdk-slider .app-tag {
+            background: rgba(139, 92, 246, 0.1);
+            color: #8B5CF6;
+            border: 1px solid rgba(139, 92, 246, 0.2);
+        }
+        
+        .sdk-slider .app-tag:hover {
+            background: rgba(139, 92, 246, 0.2);
+            border-color: rgba(139, 92, 246, 0.3);
+        }
+        
+        .sdk-slider .app-title {
+            color: var(--text-primary);
+            position: relative;
+            display: inline-block;
+        }
+        
+        .sdk-slider .app-title::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #8B5CF6, var(--primary-color));
+            transition: width 0.4s ease;
+        }
+        
+        .sdk-slider .app-card:hover .app-title::after {
+            width: 100%;
+        }
+        
+        .sdk-slider .app-meta-item i {
+            color: #8B5CF6;
+        }
 
+        /* Apps Slider */
+        .apps-tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 2rem;
+            gap: 1rem;
+        }
+
+        .apps-tab {
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            background: rgba(14, 165, 233, 0.1);
+            color: var(--text-primary);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 1px solid transparent;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .apps-tab i {
+            font-size: 1.2rem;
+        }
+
+        .apps-tab.active {
+            background: var(--primary-color);
+            color: white;
+            box-shadow: 0 10px 20px rgba(14, 165, 233, 0.2);
+        }
+
+        .apps-tab:hover:not(.active) {
+            background: rgba(14, 165, 233, 0.2);
+            transform: translateY(-3px);
+        }
+
+        .apps-slider-container {
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 4rem;
+        }
+
+        .apps-slider {
+            display: flex;
+            transition: transform 0.5s ease;
+            direction: rtl; /* For right-to-left sliding */
+        }
+
+        .apps-slide {
+            min-width: 100%;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.5rem;
+            padding: 1rem;
+            perspective: 1000px;
+        }
+
+        .slider-controls {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .slider-arrow {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: rgba(14, 165, 233, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            color: var(--text-primary);
+        }
+
+        .slider-arrow:hover {
+            background: var(--primary-color);
+            color: white;
+            transform: scale(1.1);
+        }
+
+        .slider-dots {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .slider-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: rgba(14, 165, 233, 0.2);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .slider-dot.active {
+            background: var(--primary-color);
+            transform: scale(1.2);
+        }
+
+        /* Keep existing app card styles */
         .apps-grid {
             margin-bottom: 4rem;
         }
@@ -2871,6 +3122,9 @@
             <a href="https://github.com/momenabdelaal" target="_blank" title="GitHub" class="icon-link">
                 <i class="fab fa-github"></i>
             </a>
+            <a href="assets/Moamen-Abdelaal-Senior-Mobile-Developer.pdf" download="Moamen-Abdelaal-Senior-Mobile-Developer.pdf" title="Download CV" class="icon-link cv-download">
+                <i class="fas fa-file-download"></i>
+            </a>
         </div>
         <div class="scroll-down-indicator" data-aos="fade-up" data-aos-delay="600">
             <div class="mouse">
@@ -3121,294 +3375,428 @@
             </div>
         </section>
 
-        <section id="published-apps" class="section">
-            <div class="container">
-                <h2 class="section-title" data-aos="fade-up">Published Apps</h2>
-
-                <!-- Android Apps -->
-                <h3 class="platform-title" data-aos="fade-up"><i class="fab fa-android"></i> Android Applications</h3>
-                <div class="apps-grid">
-                    <!-- Smart Schools -->
-                    <div class="app-card" data-aos="fade-up">
-                        <div class="app-image">
-                            <img src="assets/smart-schools.png" alt="Smart Schools - Educational Management System" loading="lazy">
-                            <span class="app-badge">20K+ Downloads</span>
-                        </div>
-                        <div class="app-content">
-                            <div class="app-header">
-                                <h3 class="app-title">Smart Schools</h3>
-                                <div class="app-meta">
-                                    <div class="app-meta-item">
-                                        <i class="fas fa-download"></i>
-                                        <span>20K+ Downloads</span>
+        <!-- Published Apps Section with RTL Slider -->
+<section id="published-apps" class="section">
+    <div class="container">
+        <h2 class="section-title" data-aos="fade-up">Published Apps</h2>
+        
+        <!-- Android Apps Section -->
+        <h3 class="platform-title" data-aos="fade-up"><i class="fab fa-android"></i> Android Applications</h3>
+        <div class="apps-slider-container android-slider" data-aos="fade-up">
+            <div class="apps-slider">
+                <!-- Android Apps Slide -->
+                <div class="apps-slide active" id="android-slide">
+                    <div class="apps-grid">
+                        <!-- Smart Schools -->
+                        <div class="app-card" data-aos="fade-up">
+                            <div class="app-image">
+                                <img src="assets/smart-schools.png" alt="Smart Schools - Educational Management System" loading="lazy">
+                                <span class="app-badge">20K+ Downloads</span>
+                            </div>
+                            <div class="app-content">
+                                <div class="app-header">
+                                    <h3 class="app-title">Smart Schools</h3>
+                                    <div class="app-meta">
+                                        <div class="app-meta-item">
+                                            <i class="fas fa-download"></i>
+                                            <span>20K+ Downloads</span>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <p class="app-description">Educational app with comprehensive features including QR code scanning, Google Maps integration, Zoom SDK implementation, and Firebase Cloud Messaging.</p>
-                            <div class="app-tags">
-                                <span class="app-tag">Java</span>
-                                <span class="app-tag">MVP</span>
-                                <span class="app-tag">Google Maps</span>
-                                <span class="app-tag">Zoom SDK</span>
-                                <span class="app-tag">FCM</span>
+                                <p class="app-description">Educational app with comprehensive features including QR code scanning, Google Maps integration, Zoom SDK implementation, and Firebase Cloud Messaging.</p>
+                                <div class="app-tags">
+                                    <span class="app-tag">Java</span>
+                                    <span class="app-tag">MVP</span>
+                                    <span class="app-tag">Google Maps</span>
+                                    <span class="app-tag">Zoom SDK</span>
+                                    <span class="app-tag">FCM</span>
+                                </div>
                             </div>
                         </div>
-                    </div>
 
-                    <!-- qAuth Attendance -->
-                    <div class="app-card" data-aos="fade-up">
-                        <div class="app-image" style="background-image: url('assets/qauth.png');"></div>
-                        <div class="app-content">
-                            <div class="app-header">
-                                <h3 class="app-title">qAuth Attendance</h3>
-                            </div>
-                            <p class="app-description">Attendance management app transitioned to Jetpack Compose, employing MVVM, Clean Architecture, and fingerprint authentication.</p>
-                            <div class="app-tags">
-                                <span class="app-tag">Jetpack Compose</span>
-                                <span class="app-tag">MVVM</span>
-                                <span class="app-tag">Clean Architecture</span>
-                                <span class="app-tag">Biometric Auth</span>
-                                <span class="app-tag">Kotlin</span>
+                        <!-- qAuth Attendance -->
+                        <div class="app-card" data-aos="fade-up">
+                            <div class="app-image" style="background-image: url('assets/qauth.png');"></div>
+                            <div class="app-content">
+                                <div class="app-header">
+                                    <h3 class="app-title">qAuth Attendance</h3>
+                                </div>
+                                <p class="app-description">Attendance management app transitioned to Jetpack Compose, employing MVVM, Clean Architecture, and fingerprint authentication.</p>
+                                <div class="app-tags">
+                                    <span class="app-tag">Jetpack Compose</span>
+                                    <span class="app-tag">MVVM</span>
+                                    <span class="app-tag">Clean Architecture</span>
+                                    <span class="app-tag">Biometric Auth</span>
+                                    <span class="app-tag">Kotlin</span>
+                                </div>
                             </div>
                         </div>
-                    </div>
 
-                    <!-- Amar Tick Suite -->
-                    <div class="app-card" data-aos="fade-up">
-                        <div class="app-image" style="background-image: url('assets/amartick.png');"></div>
-                        <div class="app-content">
-                            <div class="app-header">
-                                <h3 class="app-title">Amar Tick </h3>
-                            </div>
-                            <p class="app-description">E-commerce platform with customer and supplier versions, featuring secure payment integration through STC gateway.</p>
-                            <div class="app-tags">
-                                <span class="app-tag">Kotlin</span>
-                                <span class="app-tag">MVVM</span>
-                                <span class="app-tag">Payment Gateway</span>
-                                <span class="app-tag">E-commerce</span>
+                        <!-- Amar Tick Suite -->
+                        <div class="app-card" data-aos="fade-up">
+                            <div class="app-image" style="background-image: url('assets/amartick.png');"></div>
+                            <div class="app-content">
+                                <div class="app-header">
+                                    <h3 class="app-title">Amar Tick </h3>
+                                </div>
+                                <p class="app-description">E-commerce platform with customer and supplier versions, featuring secure payment integration through STC gateway.</p>
+                                <div class="app-tags">
+                                    <span class="app-tag">Kotlin</span>
+                                    <span class="app-tag">MVVM</span>
+                                    <span class="app-tag">Payment Gateway</span>
+                                    <span class="app-tag">E-commerce</span>
+                                </div>
                             </div>
                         </div>
-                    </div>
 
-                    <!-- qPMO Suite -->
-                    <div class="app-card" data-aos="fade-up">
-                        <div class="app-image" style="background-image: url('assets/qpmo.png');"></div>
-                        <div class="app-content">
-                            <div class="app-header">
-                                <h3 class="app-title">qPMO </h3>
-                            </div>
-                            <p class="app-description">Comprehensive project management platform with separate apps for employees and contractors, built with modern architecture patterns.</p>
-                            <div class="app-tags">
-                                <span class="app-tag">MVVM</span>
-                                <span class="app-tag">Clean Architecture</span>
-                                <span class="app-tag">Project Management</span>
+                        <!-- qPMO Suite -->
+                        <div class="app-card" data-aos="fade-up">
+                            <div class="app-image" style="background-image: url('assets/qpmo.png');"></div>
+                            <div class="app-content">
+                                <div class="app-header">
+                                    <h3 class="app-title">qPMO </h3>
+                                </div>
+                                <p class="app-description">Comprehensive project management platform with separate apps for employees and contractors, built with modern architecture patterns.</p>
+                                <div class="app-tags">
+                                    <span class="app-tag">MVVM</span>
+                                    <span class="app-tag">Clean Architecture</span>
+                                    <span class="app-tag">Project Management</span>
+                                </div>
                             </div>
                         </div>
-                    </div>
 
-                    <!-- ALKhalil Suite -->
-                    <div class="app-card" data-aos="fade-up">
-                        <div class="app-image">
-                            <img src="assets/alkhalilgroup.jpg" alt="ALKhalil Suite - Arabic Language Processing" loading="lazy">
-                        </div>
-                        <div class="app-content">
-                            <div class="app-header">
-                                <h3 class="app-title">ALKhalil </h3>
+                        <!-- ALKhalil Suite -->
+                        <div class="app-card" data-aos="fade-up">
+                            <div class="app-image">
+                                <img src="assets/alkhalilgroup.jpg" alt="ALKhalil Suite - Arabic Language Processing" loading="lazy">
                             </div>
-                            <p class="app-description">Project management system with specialized interfaces for employees and customers.</p>
-                            <div class="app-tags">
-                                <span class="app-tag">Java</span>
-                                <span class="app-tag">MVVM</span>
-                                <span class="app-tag">Project Management</span>
+                            <div class="app-content">
+                                <div class="app-header">
+                                    <h3 class="app-title">ALKhalil </h3>
+                                </div>
+                                <p class="app-description">Project management system with specialized interfaces for employees and customers.</p>
+                                <div class="app-tags">
+                                    <span class="app-tag">Java</span>
+                                    <span class="app-tag">MVVM</span>
+                                    <span class="app-tag">Project Management</span>
+                                </div>
                             </div>
                         </div>
-                    </div>
 
-                    <!-- Alaam Rakmy -->
-                    <div class="app-card" data-aos="fade-up">
+                        <!-- Alaam Rakmy -->
+                        <div class="app-card" data-aos="fade-up">
                             <div class="app-image" style="background-image: url('assets/alaamrakmy.png');"></div>
-                        <div class="app-content">
-                            <div class="app-header">
-                                <h3 class="app-title">Alaam Rakmy</h3>
-                            </div>
-                            <p class="app-description">Sophisticated media application featuring an advanced media player and robust content management system.</p>
-                            <div class="app-tags">
-                                <span class="app-tag">Java</span>
-                                <span class="app-tag">MVP</span>
-                                <span class="app-tag">Media Player</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Flutter Apps -->
-                <h3 class="platform-title" data-aos="fade-up"><i class="fab fa-flutter"></i> Flutter Applications</h3>
-                <div class="apps-grid">
-                    <!-- qAuth Attendance -->
-                    <div class="app-card" data-aos="fade-up">
-                        <div class="app-image" style="background-image: url('assets/qauth.png');"></div>
-                        <div class="app-content">
-                            <div class="app-header">
-                                <h3 class="app-title">qAuth Attendance</h3>
-                            </div>
-                            <p class="app-description">Attendance management system built with Flutter and BLoC pattern, employing Clean Architecture and biometric authentication for secure time tracking and state management.</p>
-                            <div class="app-tags">
-                                <span class="app-tag">Flutter</span>
-                                <span class="app-tag">BLoC</span>
-                                <span class="app-tag">Clean Architecture</span>
-                                <span class="app-tag">Biometric Auth</span>
-                                <span class="app-tag">Cross-platform</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="app-card" data-aos="fade-up">
-                        <div class="app-image" style="background-image: url('assets/ghediouh.png');"></div>
-                        <div class="app-content">
-                            <div class="app-header">
-                                <h3 class="app-title">Ghediouh </h3>
-                            </div>
-                            <p class="app-description">Ghediouh makes group food ordering easy.
-                                Create an event, let others join and add their orders, and get a clear summary of everyone's total and individual cost. Simple, smart, and perfect for group meals!
-
-                            </p>
-                            <div class="app-tags">
-                                <span class="app-tag">Flutter</span>
-                                <span class="app-tag">BLoC</span>
-                                <span class="app-tag">Clean Architecture</span>
-                                <span class="app-tag">Animations</span>
-                                <span class="app-tag">Cross-platform</span>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- HSBC Deals -->
-                    <div class="app-card" data-aos="fade-up">
-                        <div class="app-content">
-                            <div class="app-header">
-                                <h3 class="app-title">HSBC Deals</h3>
-                                <div class="app-meta">
-                                    <div class="app-meta-item">
-                                        <i class="fas fa-tag"></i>
-                                        <span>Loyalty Program App</span>
-                                    </div>
+                            <div class="app-content">
+                                <div class="app-header">
+                                    <h3 class="app-title">Alaam Rakmy</h3>
                                 </div>
-                            </div>
-                            <p class="app-description">Developed a Flutter application for HSBC's loyalty program, enabling users to redeem points for offers and cash rewards. Implemented using GetX, BLoC, and Modular architecture.</p>
-                            <div class="app-tags">
-                                <span class="app-tag">Flutter</span>
-                                <span class="app-tag">GetX</span>
-                                <span class="app-tag">BLoC</span>
-                                <span class="app-tag">Modular</span>
-                                <span class="app-tag">Cross-platform</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- iOS Apps -->
-                <h3 class="platform-title" data-aos="fade-up"><i class="fab fa-apple"></i> iOS Applications</h3>
-                <div class="apps-grid">
-                    <!-- Klsh Suite -->
-                    <div class="app-card" data-aos="fade-up">
-                        <div class="app-image" style="background-image: url('assets/klsh.png');"></div>
-                        <div class="app-content">
-                            <div class="app-header">
-                                <h3 class="app-title">Klsh </h3>
-                            </div>
-                            <p class="app-description">Comprehensive service platform with separate client and provider apps, featuring real-time updates and location services.</p>
-                            <div class="app-tags">
-                                <span class="app-tag">Swift</span>
-                                <span class="app-tag">MVVM</span>
-                                <span class="app-tag">Clean Architecture</span>
-                                <span class="app-tag">Google Maps</span>
-                                <span class="app-tag">Pusher</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- RoknEltayb -->
-                    <div class="app-card" data-aos="fade-up">
-                        <div class="app-image" style="background-image: url('assets/rokn-eltayb.png');"></div>
-                        <div class="app-content">
-                            <div class="app-header">
-                                <h3 class="app-title">RoknEltayb</h3>
-                            </div>
-                            <p class="app-description">Feature-rich e-commerce application with intuitive shopping experience and seamless checkout process.</p>
-                            <div class="app-tags">
-                                <span class="app-tag">Swift</span>
-                                <span class="app-tag">MVVM</span>
-                                <span class="app-tag">Clean Architecture</span>
-                                <span class="app-tag">E-commerce</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- qPMO Suite iOS -->
-                    <div class="app-card" data-aos="fade-up">
-                        <div class="app-image" style="background-image: url('assets/qpmo.png');"></div>
-                        <div class="app-content">
-                            <div class="app-header">
-                                <h3 class="app-title">qPMO </h3>
-                            </div>
-                            <p class="app-description">iOS version of the project management platform, built with VIPER architecture for optimal performance and maintainability.</p>
-                            <div class="app-tags">
-                                <span class="app-tag">Swift</span>
-                                <span class="app-tag">VIPER</span>
-                                <span class="app-tag">Project Management</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- SDKs -->
-                <h3 class="platform-title" data-aos="fade-up"><i class="fas fa-puzzle-piece"></i> SDKs</h3>
-                <div class="apps-grid">
-                    <!-- Mobilawy SDK -->
-                    <div class="app-card" data-aos="fade-up">
-                        <div class="app-content">
-                            <div class="app-header">
-                                <h3 class="app-title">Mobilawy SDK Consumer</h3>
-                                <div class="app-meta">
-                                    <div class="app-meta-item">
-                                        <i class="fas fa-tag"></i>
-                                        <span>Loyalty SDK – Android</span>
-                                    </div>
+                                <p class="app-description">Sophisticated media application featuring an advanced media player and robust content management system.</p>
+                                <div class="app-tags">
+                                    <span class="app-tag">Java</span>
+                                    <span class="app-tag">MVP</span>
+                                    <span class="app-tag">Media Player</span>
                                 </div>
-                            </div>
-                            <p class="app-description">Migrated to a modern XML-based UI leveraging Data Binding, implemented MVVM and Clean Architecture patterns, and enhanced the SDK's performance, scalability, and maintainability.</p>
-                            <div class="app-tags">
-                                <span class="app-tag">Kotlin</span>
-                                <span class="app-tag">MVVM</span>
-                                <span class="app-tag">Clean Architecture</span>
-                                <span class="app-tag">Data Binding</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Stars Group Jordan SDK -->
-                    <div class="app-card" data-aos="fade-up">
-                        <div class="app-content">
-                            <div class="app-header">
-                                <h3 class="app-title">Stars Group Jordan SDK</h3>
-                                <div class="app-meta">
-                                    <div class="app-meta-item">
-                                        <i class="fas fa-tag"></i>
-                                        <span>Loyalty SDK – Android</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <p class="app-description">Built using Jetpack Compose with MVI and Clean Architecture, featuring a modular, feature-based structure and reusable UI components to enhance scalability and maintainability.</p>
-                            <div class="app-tags">
-                                <span class="app-tag">Jetpack Compose</span>
-                                <span class="app-tag">MVI</span>
-                                <span class="app-tag">Clean Architecture</span>
-                                <span class="app-tag">Modular Design</span>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </section>
+            <!-- Android Slider Controls -->
+            <div class="slider-controls">
+                <div class="slider-arrow slider-prev">
+                    <i class="fas fa-chevron-left"></i>
+                </div>
+                <div class="slider-dots">
+                    <div class="slider-dot active" data-slide="0"></div>
+                </div>
+                <div class="slider-arrow slider-next">
+                    <i class="fas fa-chevron-right"></i>
+                </div>
+            </div>
+        </div>
+        
+        <!-- iOS Apps Section -->
+        <h3 class="platform-title" data-aos="fade-up"><i class="fab fa-apple"></i> iOS Applications</h3>
+        <div class="apps-slider-container ios-slider" data-aos="fade-up">
+            <div class="apps-slider">
+                <!-- iOS Apps Slide -->
+                <div class="apps-slide active" id="ios-slide">
+                    <div class="apps-grid">
+                        <!-- Klsh Suite -->
+                        <div class="app-card" data-aos="fade-up">
+                            <div class="app-image" style="background-image: url('assets/klsh.png');"></div>
+                            <div class="app-content">
+                                <div class="app-header">
+                                    <h3 class="app-title">Klsh</h3>
+                                </div>
+                                <p class="app-description">Comprehensive service platform with separate client and provider apps, featuring real-time updates and location services.</p>
+                                <div class="app-tags">
+                                    <span class="app-tag">Swift</span>
+                                    <span class="app-tag">MVVM</span>
+                                    <span class="app-tag">Clean Architecture</span>
+                                    <span class="app-tag">Google Maps</span>
+                                    <span class="app-tag">Pusher</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- RoknEltayb -->
+                        <div class="app-card" data-aos="fade-up">
+                            <div class="app-image" style="background-image: url('assets/rokn-eltayb.png');"></div>
+                            <div class="app-content">
+                                <div class="app-header">
+                                    <h3 class="app-title">RoknEltayb</h3>
+                                </div>
+                                <p class="app-description">Feature-rich e-commerce application with intuitive shopping experience and seamless checkout process.</p>
+                                <div class="app-tags">
+                                    <span class="app-tag">Swift</span>
+                                    <span class="app-tag">MVVM</span>
+                                    <span class="app-tag">Clean Architecture</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- qPMO Suite iOS -->
+                        <div class="app-card" data-aos="fade-up">
+                            <div class="app-image" style="background-image: url('assets/qpmo.png');"></div>
+                            <div class="app-content">
+                                <div class="app-header">
+                                    <h3 class="app-title">qPMO iOS</h3>
+                                </div>
+                                <p class="app-description">iOS version of the comprehensive project management platform with specialized interfaces for different user roles.</p>
+                                <div class="app-tags">
+                                    <span class="app-tag">Swift</span>
+                                    <span class="app-tag">MVVM</span>
+                                    <span class="app-tag">Clean Architecture</span>
+                                    <span class="app-tag">Project Management</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- iOS Slider Controls -->
+            <div class="slider-controls">
+                <div class="slider-arrow slider-prev">
+                    <i class="fas fa-chevron-left"></i>
+                </div>
+                <div class="slider-dots">
+                    <div class="slider-dot active" data-slide="0"></div>
+                </div>
+                <div class="slider-arrow slider-next">
+                    <i class="fas fa-chevron-right"></i>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Flutter Apps Section -->
+        <h3 class="platform-title" data-aos="fade-up"><i class="fab fa-flutter"></i> Flutter Applications</h3>
+        <div class="apps-slider-container flutter-slider" data-aos="fade-up">
+            <div class="apps-slider">
+                <!-- Flutter Apps Slide -->
+                <div class="apps-slide active" id="flutter-slide">
+                    <div class="apps-grid">
+                        <!-- qAuth Attendance Flutter -->
+                        <div class="app-card" data-aos="fade-up">
+                            <div class="app-image" style="background-image: url('assets/qauth.png');"></div>
+                            <div class="app-content">
+                                <div class="app-header">
+                                    <h3 class="app-title">qAuth Attendance</h3>
+                                </div>
+                                <p class="app-description">Attendance management system built with Flutter and BLoC pattern, employing Clean Architecture and biometric authentication for secure time tracking.</p>
+                                <div class="app-tags">
+                                    <span class="app-tag">Flutter</span>
+                                    <span class="app-tag">BLoC</span>
+                                    <span class="app-tag">Clean Architecture</span>
+                                    <span class="app-tag">Biometric Auth</span>
+                                    <span class="app-tag">Cross-platform</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Ghediouh -->
+                        <div class="app-card" data-aos="fade-up">
+                            <div class="app-image" style="background-image: url('assets/ghediouh.png');"></div>
+                            <div class="app-content">
+                                <div class="app-header">
+                                    <h3 class="app-title">Ghediouh</h3>
+                                </div>
+                                <p class="app-description">Ghediouh makes group food ordering easy. Create an event, let others join and add their orders, and get a clear summary of everyone's total and individual cost.</p>
+                                <div class="app-tags">
+                                    <span class="app-tag">Flutter</span>
+                                    <span class="app-tag">BLoC</span>
+                                    <span class="app-tag">Clean Architecture</span>
+                                    <span class="app-tag">Animations</span>
+                                    <span class="app-tag">Cross-platform</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- HSBC Deals -->
+                        <div class="app-card" data-aos="fade-up">
+                            <div class="app-image" style="background-image: url('assets/hsbc-deals.png');"></div>
+                            <div class="app-content">
+                                <div class="app-header">
+                                    <h3 class="app-title">HSBC Deals</h3>
+                                    <div class="app-meta">
+                                        <div class="app-meta-item">
+                                            <i class="fas fa-tag"></i>
+                                            <span>Loyalty Program App</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="app-description">Developed a Flutter application for HSBC's loyalty program, enabling users to redeem points for offers and cash rewards. Implemented using GetX, BLoC, and Modular architecture.</p>
+                                <div class="app-tags">
+                                    <span class="app-tag">Flutter</span>
+                                    <span class="app-tag">GetX</span>
+                                    <span class="app-tag">BLoC</span>
+                                    <span class="app-tag">Modular</span>
+                                    <span class="app-tag">Cross-platform</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Flutter Slider Controls -->
+            <div class="slider-controls">
+                <div class="slider-arrow slider-prev">
+                    <i class="fas fa-chevron-left"></i>
+                </div>
+                <div class="slider-dots">
+                    <div class="slider-dot active" data-slide="0"></div>
+                </div>
+                <div class="slider-arrow slider-next">
+                    <i class="fas fa-chevron-right"></i>
+                </div>
+            </div>
+        </div>
+        
+        <!-- SDK Section -->
+        <h3 class="platform-title" data-aos="fade-up"><i class="fas fa-puzzle-piece"></i> SDKs & Libraries</h3>
+        <div class="apps-slider-container sdk-slider" data-aos="fade-up">
+            <div class="apps-slider">
+                <!-- SDK Slide -->
+                <div class="apps-slide active" id="sdk-slide">
+                    <div class="apps-grid">
+                        <!-- Registration SDK -->
+                        <div class="app-card" data-aos="fade-up">
+                            <div class="app-content">
+                                <div class="app-header">
+                                    <h3 class="app-title">Registration SDK</h3>
+                                    <div class="app-meta">
+                                        <div class="app-meta-item">
+                                            <i class="fas fa-code"></i>
+                                            <span>Android Library</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="app-description">A reusable Android SDK for user registration and authentication, built with modern Android practices and security best practices.</p>
+                                <div class="app-tags">
+                                    <span class="app-tag">Android SDK</span>
+                                    <span class="app-tag">Authentication</span>
+                                    <span class="app-tag">Security</span>
+                                    <span class="app-tag">Reusable Components</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Payment Gateway SDK -->
+                        <div class="app-card" data-aos="fade-up">
+                            <div class="app-content">
+                                <div class="app-header">
+                                    <h3 class="app-title">Payment Gateway SDK</h3>
+                                </div>
+                                <p class="app-description">Integrated payment processing SDK supporting multiple payment methods and secure transaction handling for mobile applications.</p>
+                                <div class="app-tags">
+                                    <span class="app-tag">Android</span>
+                                    <span class="app-tag">iOS</span>
+                                    <span class="app-tag">Payment Processing</span>
+                                    <span class="app-tag">Security</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Analytics SDK -->
+                        <div class="app-card" data-aos="fade-up">
+                            <div class="app-content">
+                                <div class="app-header">
+                                    <h3 class="app-title">Analytics SDK</h3>
+                                </div>
+                                <p class="app-description">Custom analytics solution for tracking user behavior, app performance, and business metrics with privacy-first approach.</p>
+                                <div class="app-tags">
+                                    <span class="app-tag">Cross-platform</span>
+                                    <span class="app-tag">Data Analytics</span>
+                                    <span class="app-tag">Privacy</span>
+                                    <span class="app-tag">Real-time Reporting</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Mobilawy SDK Consumer -->
+                        <div class="app-card" data-aos="fade-up">
+                            <div class="app-content">
+                                <div class="app-header">
+                                    <h3 class="app-title">Mobilawy SDK Consumer</h3>
+                                    <div class="app-meta">
+                                        <div class="app-meta-item">
+                                            <i class="fas fa-award"></i>
+                                            <span>Loyalty SDK</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="app-description">Migrated to a modern XML-based UI leveraging Data Binding, implemented MVVM and Clean Architecture patterns, and enhanced the SDK's performance, scalability, and maintainability.</p>
+                                <div class="app-tags">
+                                    <span class="app-tag">Android SDK</span>
+                                    <span class="app-tag">XML</span>
+                                    <span class="app-tag">Data Binding</span>
+                                    <span class="app-tag">MVVM</span>
+                                    <span class="app-tag">Clean Architecture</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Stars Group Jordan SDK -->
+                        <div class="app-card" data-aos="fade-up">
+                            <div class="app-content">
+                                <div class="app-header">
+                                    <h3 class="app-title">Stars Group Jordan SDK</h3>
+                                    <div class="app-meta">
+                                        <div class="app-meta-item">
+                                            <i class="fas fa-star"></i>
+                                            <span>Loyalty SDK</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="app-description">Built using Jetpack Compose with MVI and Clean Architecture, featuring a modular, feature-based structure and reusable UI components to enhance scalability and maintainability.</p>
+                                <div class="app-tags">
+                                    <span class="app-tag">Android SDK</span>
+                                    <span class="app-tag">Jetpack Compose</span>
+                                    <span class="app-tag">MVI</span>
+                                    <span class="app-tag">Clean Architecture</span>
+                                    <span class="app-tag">Modular</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- SDK Slider Controls -->
+            <div class="slider-controls">
+                <div class="slider-arrow slider-prev">
+                    <i class="fas fa-chevron-left"></i>
+                </div>
+                <div class="slider-dots">
+                    <div class="slider-dot active" data-slide="0"></div>
+                </div>
+                <div class="slider-arrow slider-next">
+                    <i class="fas fa-chevron-right"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
         <section id="sample-apps" class="section">
             <div class="container">
                 <h2 class="section-title" data-aos="fade-up">Sample Apps</h2>
@@ -3759,6 +4147,9 @@
     </style>
 
     <!-- Contact Section with Google Form -->
-   
+    
+    <!-- Include slider.js for the Published Apps slider -->
+    <script src="slider.js"></script>
 </body>
 </html>
+

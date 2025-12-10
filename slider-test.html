@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Published Apps Slider Test</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #0ea5e9;
+            --secondary-color: #3b82f6;
+            --text-primary: #0f172a;
+        }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8fafc;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 2rem;
+            font-size: 2rem;
+            color: var(--text-primary);
+        }
+        
+        /* App Card Styles */
+        .app-card {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+        
+        .app-image {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+        
+        .app-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .app-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: var(--primary-color);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        
+        .app-content {
+            padding: 1.5rem;
+        }
+        
+        .app-title {
+            margin: 0 0 0.5rem;
+            color: var(--text-primary);
+        }
+        
+        .app-description {
+            color: #64748b;
+            margin-bottom: 1rem;
+        }
+        
+        .app-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+        
+        .app-tag {
+            background: rgba(14, 165, 233, 0.1);
+            color: var(--primary-color);
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        
+        /* Published Apps Slider Styles */
+        .apps-tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 2rem;
+            gap: 1rem;
+        }
+
+        .apps-tab {
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            background: rgba(14, 165, 233, 0.1);
+            color: var(--text-primary);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 1px solid transparent;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .apps-tab i {
+            font-size: 1.2rem;
+        }
+
+        .apps-tab.active {
+            background: var(--primary-color);
+            color: white;
+            box-shadow: 0 10px 20px rgba(14, 165, 233, 0.2);
+        }
+
+        .apps-tab:hover:not(.active) {
+            background: rgba(14, 165, 233, 0.2);
+            transform: translateY(-3px);
+        }
+
+        /* Enhanced Slider for RTL swiping */
+        .apps-slider-container {
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 2rem;
+            width: 100%;
+        }
+
+        .apps-slider {
+            display: flex;
+            flex-direction: row-reverse; /* For right-to-left sliding */
+            transition: transform 0.5s ease;
+            width: 300%; /* For 3 slides (Android, iOS, Flutter) */
+        }
+
+        .apps-slide {
+            min-width: 33.333%; /* Each slide takes 1/3 of the slider width */
+            padding: 1rem;
+            box-sizing: border-box;
+        }
+
+        .apps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .slider-controls {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1rem;
+            margin-top: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .slider-arrow {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: rgba(14, 165, 233, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            color: var(--text-primary);
+            font-size: 1.2rem;
+        }
+
+        .slider-arrow:hover {
+            background: var(--primary-color);
+            color: white;
+            transform: scale(1.1);
+        }
+
+        .slider-dots {
+            display: flex;
+            justify-content: center;
+            gap: 0.75rem;
+            margin-top: 1rem;
+        }
+
+        .slider-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(14, 165, 233, 0.2);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .slider-dot.active {
+            background: var(--primary-color);
+            transform: scale(1.2);
+        }
+        
+        /* For mobile responsiveness */
+        @media (max-width: 768px) {
+            .apps-slider {
+                width: 300%; /* Keep the same width for 3 slides */
+            }
+            
+            .apps-slide {
+                min-width: 100%; /* Each slide takes full width on mobile */
+            }
+            
+            .apps-grid {
+                grid-template-columns: 1fr; /* Single column on mobile */
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="section-title">Published Apps</h1>
+        
+        <!-- Platform Tabs -->
+        <div class="apps-tabs">
+            <div class="apps-tab active" data-platform="android">
+                <i class="fab fa-android"></i>
+                <span>Android</span>
+            </div>
+            <div class="apps-tab" data-platform="ios">
+                <i class="fab fa-apple"></i>
+                <span>iOS</span>
+            </div>
+            <div class="apps-tab" data-platform="flutter">
+                <i class="fab fa-flutter"></i>
+                <span>Flutter</span>
+            </div>
+        </div>
+        
+        <!-- Apps Slider Container -->
+        <div class="apps-slider-container">
+            <div class="apps-slider">
+                <!-- Android Apps Slide -->
+                <div class="apps-slide" id="android-slide">
+                    <div class="apps-grid">
+                        <!-- App Card 1 -->
+                        <div class="app-card">
+                            <div class="app-image" style="background-image: url('https://via.placeholder.com/400x200/3DDC84/FFFFFF?text=Android+App')"></div>
+                            <div class="app-content">
+                                <h3 class="app-title">Android App 1</h3>
+                                <p class="app-description">Description of Android App 1</p>
+                                <div class="app-tags">
+                                    <span class="app-tag">Java</span>
+                                    <span class="app-tag">Kotlin</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- App Card 2 -->
+                        <div class="app-card">
+                            <div class="app-image" style="background-image: url('https://via.placeholder.com/400x200/3DDC84/FFFFFF?text=Android+App')"></div>
+                            <div class="app-content">
+                                <h3 class="app-title">Android App 2</h3>
+                                <p class="app-description">Description of Android App 2</p>
+                                <div class="app-tags">
+                                    <span class="app-tag">Kotlin</span>
+                                    <span class="app-tag">MVVM</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- iOS Apps Slide -->
+                <div class="apps-slide" id="ios-slide">
+                    <div class="apps-grid">
+                        <!-- App Card 1 -->
+                        <div class="app-card">
+                            <div class="app-image" style="background-image: url('https://via.placeholder.com/400x200/000000/FFFFFF?text=iOS+App')"></div>
+                            <div class="app-content">
+                                <h3 class="app-title">iOS App 1</h3>
+                                <p class="app-description">Description of iOS App 1</p>
+                                <div class="app-tags">
+                                    <span class="app-tag">Swift</span>
+                                    <span class="app-tag">SwiftUI</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- App Card 2 -->
+                        <div class="app-card">
+                            <div class="app-image" style="background-image: url('https://via.placeholder.com/400x200/000000/FFFFFF?text=iOS+App')"></div>
+                            <div class="app-content">
+                                <h3 class="app-title">iOS App 2</h3>
+                                <p class="app-description">Description of iOS App 2</p>
+                                <div class="app-tags">
+                                    <span class="app-tag">Swift</span>
+                                    <span class="app-tag">MVVM</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Flutter Apps Slide -->
+                <div class="apps-slide" id="flutter-slide">
+                    <div class="apps-grid">
+                        <!-- App Card 1 -->
+                        <div class="app-card">
+                            <div class="app-image" style="background-image: url('https://via.placeholder.com/400x200/0175C2/FFFFFF?text=Flutter+App')"></div>
+                            <div class="app-content">
+                                <h3 class="app-title">Flutter App 1</h3>
+                                <p class="app-description">Description of Flutter App 1</p>
+                                <div class="app-tags">
+                                    <span class="app-tag">Flutter</span>
+                                    <span class="app-tag">Dart</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- App Card 2 -->
+                        <div class="app-card">
+                            <div class="app-image" style="background-image: url('https://via.placeholder.com/400x200/0175C2/FFFFFF?text=Flutter+App')"></div>
+                            <div class="app-content">
+                                <h3 class="app-title">Flutter App 2</h3>
+                                <p class="app-description">Description of Flutter App 2</p>
+                                <div class="app-tags">
+                                    <span class="app-tag">Flutter</span>
+                                    <span class="app-tag">BLoC</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Slider Controls -->
+            <div class="slider-controls">
+                <div class="slider-arrow slider-prev">
+                    <i class="fas fa-chevron-left"></i>
+                </div>
+                <div class="slider-dots">
+                    <div class="slider-dot active" data-slide="0"></div>
+                    <div class="slider-dot" data-slide="1"></div>
+                    <div class="slider-dot" data-slide="2"></div>
+                </div>
+                <div class="slider-arrow slider-next">
+                    <i class="fas fa-chevron-right"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Elements
+            const tabsContainer = document.querySelector('.apps-tabs');
+            const tabs = document.querySelectorAll('.apps-tab');
+            const slider = document.querySelector('.apps-slider');
+            const slides = document.querySelectorAll('.apps-slide');
+            const prevBtn = document.querySelector('.slider-prev');
+            const nextBtn = document.querySelector('.slider-next');
+            const dots = document.querySelectorAll('.slider-dot');
+            
+            // Variables
+            let currentSlide = 0;
+            const slideCount = slides.length;
+            
+            // Initialize
+            updateSlider();
+            
+            // Event Listeners
+            tabsContainer.addEventListener('click', function(e) {
+                const tab = e.target.closest('.apps-tab');
+                if (tab) {
+                    const platform = tab.dataset.platform;
+                    const slideIndex = Array.from(tabs).findIndex(t => t.dataset.platform === platform);
+                    if (slideIndex !== -1) {
+                        goToSlide(slideIndex);
+                    }
+                }
+            });
+            
+            prevBtn.addEventListener('click', function() {
+                goToSlide((currentSlide - 1 + slideCount) % slideCount);
+            });
+            
+            nextBtn.addEventListener('click', function() {
+                goToSlide((currentSlide + 1) % slideCount);
+            });
+            
+            dots.forEach((dot, index) => {
+                dot.addEventListener('click', function() {
+                    goToSlide(index);
+                });
+            });
+            
+            // Touch Swipe Support
+            let touchStartX = 0;
+            let touchEndX = 0;
+            
+            slider.addEventListener('touchstart', function(e) {
+                touchStartX = e.changedTouches[0].screenX;
+            }, { passive: true });
+            
+            slider.addEventListener('touchend', function(e) {
+                touchEndX = e.changedTouches[0].screenX;
+                handleSwipe();
+            }, { passive: true });
+            
+            function handleSwipe() {
+                const swipeThreshold = 50;
+                if (touchStartX - touchEndX > swipeThreshold) {
+                    // Swiped left (next slide)
+                    goToSlide((currentSlide + 1) % slideCount);
+                } else if (touchEndX - touchStartX > swipeThreshold) {
+                    // Swiped right (previous slide)
+                    goToSlide((currentSlide - 1 + slideCount) % slideCount);
+                }
+            }
+            
+            // Functions
+            function goToSlide(index) {
+                currentSlide = index;
+                updateSlider();
+            }
+            
+            function updateSlider() {
+                // Update slider position (RTL direction)
+                slider.style.transform = `translateX(${currentSlide * (100 / slideCount)}%)`;
+                
+                // Update active tab
+                tabs.forEach((tab, index) => {
+                    if (index === currentSlide) {
+                        tab.classList.add('active');
+                    } else {
+                        tab.classList.remove('active');
+                    }
+                });
+                
+                // Update active dot
+                dots.forEach((dot, index) => {
+                    if (index === currentSlide) {
+                        dot.classList.add('active');
+                    } else {
+                        dot.classList.remove('active');
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>
