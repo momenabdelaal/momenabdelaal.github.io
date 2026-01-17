@@ -71,9 +71,32 @@
 
 .apps-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 1.5rem;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
     perspective: 1000px;
+}
+
+@media (max-width: 992px) {
+    .apps-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .apps-grid {
+        grid-template-columns: 1fr !important;
+        gap: 1.25rem;
+        padding: 0 0.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .apps-grid {
+        grid-template-columns: 1fr !important;
+        gap: 1rem;
+        padding: 0 0.5rem;
+    }
 }
 
 /* App Card Styles */
@@ -86,6 +109,8 @@
     height: 100%;
     display: flex;
     flex-direction: column;
+    width: 100%;
+    max-width: 100%;
 }
 
 .app-card:hover {
@@ -249,14 +274,178 @@
 /* For mobile responsiveness */
 @media (max-width: 768px) {
     .apps-slider {
-        width: 300%; /* Keep the same width for 3 slides */
+        width: 100%;
     }
     
     .apps-slide {
-        min-width: 100%; /* Each slide takes full width on mobile */
+        min-width: 100%;
+        padding: 0.5rem;
     }
     
-    .apps-grid {
-        grid-template-columns: 1fr; /* Single column on mobile */
+    .apps-tabs {
+        flex-wrap: wrap;
+        gap: 0.75rem;
+        padding: 0 1rem;
+    }
+    
+    .apps-tab {
+        padding: 0.65rem 1.25rem;
+        font-size: 0.9rem;
+    }
+    
+    .apps-tab i {
+        font-size: 1rem;
+    }
+    
+    .platform-title {
+        font-size: 1.3rem;
+        margin: 1.5rem 0 1rem;
+    }
+    
+    .app-card {
+        max-width: 100%;
+        width: 100%;
+    }
+    
+    .app-image {
+        height: 120px;
+    }
+    
+    .app-content {
+        padding: 0.9rem;
+    }
+    
+    .app-title {
+        font-size: 1rem;
+        color: var(--text-primary);
+    }
+    
+    .app-description {
+        font-size: 0.85rem;
+        line-height: 1.4;
+        color: var(--text-secondary);
+    }
+    
+    .app-meta {
+        font-size: 0.8rem;
+    }
+    
+    .app-tag {
+        font-size: 0.7rem;
+        padding: 0.25rem 0.6rem;
+    }
+    
+    .slider-arrow {
+        width: 45px;
+        height: 45px;
+        font-size: 1.1rem;
+    }
+    
+    .slider-dot {
+        width: 10px;
+        height: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .apps-slide {
+        padding: 0.5rem;
+    }
+    
+    .apps-tabs {
+        gap: 0.5rem;
+        padding: 0 0.5rem;
+    }
+    
+    .apps-tab {
+        padding: 0.6rem 1rem;
+        font-size: 0.85rem;
+        flex: 1;
+        min-width: calc(50% - 0.25rem);
+        justify-content: center;
+    }
+    
+    .platform-title {
+        font-size: 1.2rem;
+        margin: 1rem 0 0.75rem;
+    }
+    
+    .app-card {
+        border-radius: 10px;
+        width: 100%;
+        max-width: 100%;
+    }
+    
+    .app-card:hover {
+        transform: none;
+    }
+    
+    .app-image {
+        height: 100px;
+    }
+    
+    .app-content {
+        padding: 0.75rem;
+    }
+    
+    .app-header {
+        margin-bottom: 0.4rem;
+    }
+    
+    .app-title {
+        font-size: 1.05rem;
+    }
+    
+    .app-description {
+        font-size: 0.8rem;
+        margin-bottom: 0.75rem;
+    }
+    
+    .app-meta {
+        font-size: 0.75rem;
+        gap: 0.4rem;
+    }
+    
+    .app-tags {
+        gap: 0.4rem;
+    }
+    
+    .app-tag {
+        font-size: 0.65rem;
+        padding: 0.2rem 0.6rem;
+    }
+    
+    .app-badge {
+        font-size: 0.7rem;
+        padding: 0.2rem 0.6rem;
+        top: 8px;
+        right: 8px;
+    }
+    
+    .github-link {
+        width: 28px;
+        height: 28px;
+        font-size: 1rem;
+    }
+    
+    .slider-controls {
+        gap: 0.75rem;
+        margin-top: 1.5rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .slider-arrow {
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
+    }
+    
+    .slider-dots {
+        gap: 0.5rem;
+    }
+    
+    .slider-dot {
+        width: 8px;
+        height: 8px;
     }
 }
