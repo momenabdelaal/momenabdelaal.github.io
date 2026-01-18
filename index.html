@@ -2113,6 +2113,120 @@
         @media (max-width: 768px) {
             .apps-grid {
                 grid-template-columns: 1fr;
+                gap: 2rem;
+                padding: 0 1rem;
+            }
+            
+            .app-card {
+                max-width: 100%;
+                margin: 0 auto;
+            }
+            
+            .app-card:hover {
+                transform: translateY(-5px);
+            }
+            
+            .app-image {
+                height: 200px;
+            }
+            
+            .app-content {
+                padding: 1.5rem;
+            }
+            
+            .app-title {
+                font-size: 1.25rem;
+            }
+            
+            .app-description {
+                font-size: 0.95rem;
+                line-height: 1.6;
+            }
+            
+            .app-meta {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.75rem;
+            }
+            
+            .app-tags {
+                gap: 0.5rem;
+            }
+            
+            .app-tag {
+                font-size: 0.8rem;
+                padding: 0.35rem 0.85rem;
+            }
+            
+            .app-links {
+                flex-direction: column;
+                gap: 0.75rem;
+            }
+            
+            .app-link {
+                width: 100%;
+                text-align: center;
+                padding: 0.85rem 1.25rem;
+                font-size: 0.9rem;
+            }
+            
+            .app-badge {
+                font-size: 0.75rem;
+                padding: 0.35rem 0.85rem;
+                top: 10px;
+                right: 10px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .apps-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+                padding: 0 0.5rem;
+            }
+            
+            .app-card {
+                border-radius: 12px;
+            }
+            
+            .app-card:hover {
+                transform: none;
+            }
+            
+            .app-image {
+                height: 180px;
+            }
+            
+            .app-content {
+                padding: 1.25rem;
+            }
+            
+            .app-title {
+                font-size: 1.15rem;
+            }
+            
+            .app-description {
+                font-size: 0.9rem;
+                margin-bottom: 1.25rem;
+            }
+            
+            .app-meta-item {
+                font-size: 0.85rem;
+                padding: 0.35rem 0.7rem;
+            }
+            
+            .app-tag {
+                font-size: 0.75rem;
+                padding: 0.3rem 0.75rem;
+            }
+            
+            .app-links {
+                margin-top: 1rem;
+            }
+            
+            .app-link {
+                padding: 0.75rem 1rem;
+                font-size: 0.85rem;
             }
         }
 
@@ -2126,6 +2240,19 @@
         .achievement-card {
             text-align: center;
             padding: 2rem;
+        }
+        
+        @media (max-width: 768px) {
+            .achievements-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .achievements-grid {
+                gap: 1.25rem;
+            }
         }
 
         .achievement-icon {
@@ -2332,6 +2459,29 @@
             font-size: 1.75rem;
         }
         
+        @media (max-width: 768px) {
+            .platform-title {
+                font-size: 1.3rem;
+                margin: 2rem 0 1.5rem;
+                flex-wrap: wrap;
+            }
+            
+            .platform-title i {
+                font-size: 1.5rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .platform-title {
+                font-size: 1.2rem;
+                margin: 1.5rem 0 1rem;
+            }
+            
+            .platform-title i {
+                font-size: 1.3rem;
+            }
+        }
+        
         .platform-title .fa-android {
             color: #3DDC84;  /* Android green */
         }
@@ -2457,11 +2607,22 @@
 
         .apps-slide {
             min-width: 100%;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 2.5rem;
             padding: 1rem;
+        }
+        
+        .apps-slide .apps-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
             perspective: 1000px;
+            width: 100%;
+        }
+        
+        @media (max-width: 992px) {
+            .apps-slide .apps-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1.5rem;
+            }
         }
 
         .slider-controls {
@@ -2509,6 +2670,253 @@
         .slider-dot.active {
             background: var(--primary-color);
             transform: scale(1.2);
+        }
+        
+        @media (max-width: 768px) {
+            .apps-tabs {
+                flex-wrap: wrap;
+                gap: 0.75rem;
+                padding: 0 1rem;
+                margin-bottom: 1.5rem;
+            }
+            
+            .apps-tab {
+                padding: 0.65rem 1.25rem;
+                font-size: 0.9rem;
+            }
+            
+            .apps-tab i {
+                font-size: 1rem;
+            }
+            
+            .apps-slider-container {
+                margin-bottom: 3rem;
+            }
+            
+            .apps-slide {
+                padding: 0.5rem;
+            }
+            
+            .apps-slide .apps-grid {
+                grid-template-columns: 1fr !important;
+                gap: 1.25rem;
+                width: 100%;
+                padding: 0 0.5rem;
+            }
+            
+            /* Reduce card sizes on mobile */
+            #published-apps .app-card {
+                width: 100%;
+                max-width: 100%;
+            }
+            
+            #published-apps .app-image {
+                height: 120px;
+            }
+            
+            #published-apps .app-content {
+                padding: 0.9rem;
+            }
+            
+            #published-apps .app-header {
+                margin-bottom: 0.5rem;
+            }
+            
+            #published-apps .app-title {
+                font-size: 1rem;
+                margin-bottom: 0.4rem;
+                color: var(--text-primary);
+                display: block;
+                visibility: visible;
+            }
+            
+            #published-apps .app-description {
+                font-size: 0.85rem;
+                line-height: 1.4;
+                margin-bottom: 0.75rem;
+                color: var(--text-secondary);
+                display: block;
+                visibility: visible;
+            }
+            
+            #published-apps .app-tags {
+                gap: 0.35rem;
+                margin-bottom: 0.5rem;
+                display: flex;
+                flex-wrap: wrap;
+            }
+            
+            #published-apps .app-tag {
+                font-size: 0.7rem;
+                padding: 0.25rem 0.6rem;
+                color: var(--primary-color);
+                background: rgba(14, 165, 233, 0.1);
+                display: inline-block;
+                visibility: visible;
+            }
+            
+            #published-apps .app-badge {
+                font-size: 0.65rem;
+                padding: 0.25rem 0.6rem;
+            }
+            
+            .slider-controls {
+                margin-top: 1.5rem;
+            }
+            
+            .slider-arrow {
+                width: 45px;
+                height: 45px;
+                font-size: 1.1rem;
+            }
+            
+            .slider-dots {
+                margin-top: 1rem;
+            }
+            
+            .slider-dot {
+                width: 10px;
+                height: 10px;
+            }
+            
+            .sdk-slider .app-card:hover {
+                transform: translateY(-5px);
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .apps-tabs {
+                gap: 0.5rem;
+                padding: 0 0.5rem;
+            }
+            
+            .apps-tab {
+                padding: 0.6rem 1rem;
+                font-size: 0.85rem;
+                flex: 1;
+                min-width: calc(50% - 0.25rem);
+                justify-content: center;
+            }
+            
+            .apps-tab i {
+                font-size: 0.9rem;
+            }
+            
+            .apps-slider-container {
+                margin-bottom: 2rem;
+            }
+            
+            .apps-slide {
+                padding: 0.5rem;
+            }
+            
+            .apps-slide .apps-grid {
+                grid-template-columns: 1fr !important;
+                gap: 1rem;
+                width: 100%;
+                padding: 0 0.5rem;
+            }
+            
+            /* Further reduce card sizes on small mobile */
+            #published-apps .app-card {
+                width: 100%;
+                max-width: 100%;
+                border-radius: 10px;
+            }
+            
+            #published-apps .app-image {
+                height: 100px;
+            }
+            
+            #published-apps .app-content {
+                padding: 0.75rem;
+            }
+            
+            #published-apps .app-header {
+                margin-bottom: 0.4rem;
+            }
+            
+            #published-apps .app-title {
+                font-size: 0.95rem;
+                margin-bottom: 0.3rem;
+                color: var(--text-primary);
+                display: block;
+                visibility: visible;
+            }
+            
+            #published-apps .app-description {
+                font-size: 0.8rem;
+                line-height: 1.4;
+                margin-bottom: 0.6rem;
+                color: var(--text-secondary);
+                display: block;
+                visibility: visible;
+            }
+            
+            #published-apps .app-meta {
+                margin-bottom: 0.5rem;
+            }
+            
+            #published-apps .app-meta-item {
+                font-size: 0.75rem;
+                padding: 0.25rem 0.5rem;
+            }
+            
+            #published-apps .app-tags {
+                gap: 0.3rem;
+                margin-bottom: 0.5rem;
+                display: flex;
+                flex-wrap: wrap;
+            }
+            
+            #published-apps .app-tag {
+                font-size: 0.65rem;
+                padding: 0.2rem 0.5rem;
+                color: var(--primary-color);
+                background: rgba(14, 165, 233, 0.1);
+                display: inline-block;
+                visibility: visible;
+            }
+            
+            #published-apps .app-badge {
+                font-size: 0.6rem;
+                padding: 0.2rem 0.5rem;
+                top: 6px;
+                right: 6px;
+            }
+            
+            .sdk-slider .app-card {
+                border-radius: 10px;
+            }
+            
+            .sdk-slider .app-card:hover {
+                transform: none;
+            }
+            
+            .slider-controls {
+                gap: 0.75rem;
+                margin-top: 1.25rem;
+            }
+            
+            .slider-arrow {
+                width: 40px;
+                height: 40px;
+                font-size: 1rem;
+            }
+            
+            .slider-arrow:hover {
+                transform: scale(1.05);
+            }
+            
+            .slider-dots {
+                gap: 0.4rem;
+                margin-top: 0.75rem;
+            }
+            
+            .slider-dot {
+                width: 8px;
+                height: 8px;
+            }
         }
 
         /* Keep existing app card styles */
@@ -2771,6 +3179,114 @@
             margin-top: 0.5rem;
             font-size: 0.9rem;
             color: var(--text-secondary);
+        }
+        
+        @media (max-width: 768px) {
+            .education-card,
+            .achievement-card,
+            .language-card {
+                padding: 1.5rem;
+                margin-bottom: 1.25rem;
+            }
+            
+            .education-card h3 {
+                font-size: 1.3rem;
+                flex-wrap: wrap;
+            }
+            
+            .institution {
+                font-size: 1rem;
+                flex-wrap: wrap;
+            }
+            
+            .certification-item {
+                flex-direction: column;
+                gap: 0.5rem;
+                padding: 1rem 0;
+            }
+            
+            .certification-meta {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+            
+            .achievement-title {
+                font-size: 1.15rem;
+                flex-wrap: wrap;
+            }
+            
+            .achievement-description {
+                font-size: 0.95rem;
+            }
+            
+            .language-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.5rem;
+            }
+            
+            .language-details {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .education-card,
+            .achievement-card,
+            .language-card {
+                padding: 1.25rem;
+                border-radius: 10px;
+            }
+            
+            .education-card h3 {
+                font-size: 1.2rem;
+            }
+            
+            .education-card h3 i {
+                font-size: 1.1rem;
+            }
+            
+            .institution {
+                font-size: 0.95rem;
+            }
+            
+            .year {
+                font-size: 0.9rem;
+            }
+            
+            .certification-title {
+                font-size: 0.95rem;
+            }
+            
+            .certification-meta {
+                font-size: 0.85rem;
+            }
+            
+            .achievement-title {
+                font-size: 1.1rem;
+            }
+            
+            .achievement-title i {
+                font-size: 1.5rem;
+            }
+            
+            .achievement-description {
+                font-size: 0.9rem;
+            }
+            
+            .achievement-metric {
+                font-size: 0.85rem;
+                padding: 0.2rem 0.6rem;
+            }
+            
+            .language-name {
+                font-size: 0.95rem;
+            }
+            
+            .language-level {
+                font-size: 0.85rem;
+            }
         }
 
         .language-detail {
