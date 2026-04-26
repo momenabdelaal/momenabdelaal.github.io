@@ -165,7 +165,12 @@ const animateSkillBars = () => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 const targetWidth = entry.target.getAttribute('data-width');
-                entry.target.style.width = targetWidth + '%';
+                if (targetWidth) {
+                    setTimeout(() => {
+                        entry.target.style.width = targetWidth + '%';
+                    }, 200);
+                }
+                observer.unobserve(entry.target);
             }
         });
     }, { threshold: 0.2, rootMargin: '0px 0px -100px 0px' });
@@ -314,6 +319,62 @@ const addSectionDecorators = () => {
     });
 };
 
+// Enhanced scroll-to-top button functionality
+const initScrollToTop = () => {
+    const scrollTopBtn = document.querySelector('.scroll-top');
+    if (!scrollTopBtn) return;
+    
+    // Show/hide button based on scroll position
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 300) {
+            scrollTopBtn.classList.add('visible');
+        } else {
+            scrollTopBtn.classList.remove('visible');
+        }
+    });
+    
+    // Smooth scroll to top on click
+    scrollTopBtn.addEventListener('click', () => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
+};
+
+// Animated counter for statistics
+const animateCounters = () => {
+    const counters = document.querySelectorAll('.stat-number');
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const target = entry.target;
+                const text = target.textContent;
+                const number = parseInt(text.replace(/\D/g, ''));
+                const suffix = text.replace(/[0-9]/g, '');
+                
+                if (!isNaN(number)) {
+                    let current = 0;
+                    const increment = number / 50;
+                    const timer = setInterval(() => {
+                        current += increment;
+                        if (current >= number) {
+                            target.textContent = number + suffix;
+                            clearInterval(timer);
+                        } else {
+                            target.textContent = Math.floor(current) + suffix;
+                        }
+                    }, 30);
+                }
+                observer.unobserve(target);
+            }
+        });
+    }, { threshold: 0.5 });
+    
+    counters.forEach(counter => observer.observe(counter));
+};
+
 // Initialize all animations and effects
 document.addEventListener('DOMContentLoaded', () => {
     // Initialize AOS with enhanced settings
@@ -341,11 +402,13 @@ document.addEventListener('DOMContentLoaded', () => {
     initNavbar();
     createModernParticles();
     createTitleEffect();
-    initNameHoverEffect(); // Initialize the name hover effect
+    initNameHoverEffect();
     animateSkillBars();
     enhanceTimeline();
     enhanceProjectCards();
     initScrollIndicator();
     initDarkMode();
     addSectionDecorators();
+    initScrollToTop();
+    animateCounters();
 });
