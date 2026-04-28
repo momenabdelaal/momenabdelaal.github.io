@@ -3,8 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Momen Abdelaal's Professional CV">
-    <title>Momen Abdelaal - Senior Mobile Engineer</title>
+    <meta name="description" content="Moamen Abdelaal - Senior Mobile Engineer with 8+ years of expertise in Android, iOS, and Flutter development. Specialized in high-performance mobile applications with 95% crash-free rate.">
+    <title>Moamen Abdelaal - Senior Mobile Engineer | Android, iOS & Flutter Expert</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>👨‍💻</text></svg>">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://momenabdelaal.github.io/">
+    <meta property="og:title" content="Moamen Abdelaal - Senior Mobile Engineer">
+    <meta property="og:description" content="Senior Mobile Engineer with 8+ years of expertise in Android, iOS, and Flutter development. Building high-performance mobile applications.">
+    <meta property="og:image" content="https://momenabdelaal.github.io/assets/preview.svg">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://momenabdelaal.github.io/">
+    <meta property="twitter:title" content="Moamen Abdelaal - Senior Mobile Engineer">
+    <meta property="twitter:description" content="Senior Mobile Engineer with 8+ years of expertise in Android, iOS, and Flutter development.">
+    <meta property="twitter:image" content="https://momenabdelaal.github.io/assets/preview.svg">
+    
+    <!-- Additional SEO -->
+    <meta name="author" content="Moamen Abdelaal">
+    <meta name="keywords" content="Mobile Developer, Android Developer, iOS Developer, Flutter Developer, Kotlin, Swift, Dart, Mobile Engineer, Senior Developer">
+    <link rel="canonical" href="https://momenabdelaal.github.io/">
     <svg width="0" height="0">
         <defs>
             <linearGradient id="flutter-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
@@ -50,11 +72,56 @@
             box-sizing: border-box;
         }
 
+        html {
+            background-color: #f8fafc;
+            min-height: 100%;
+            height: 100%;
+        }
+
+        html.dark-theme,
+        body.dark-theme html {
+            background-color: #0f172a !important;
+        }
+
+        body.dark-theme,
+        body.dark-theme * {
+            background-color: transparent;
+        }
+
+        body.dark-theme {
+            background-color: #0f172a !important;
+        }
+
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
             background-color: var(--bg-secondary);
             color: var(--text-primary);
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
             line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        body.dark-theme {
+            background-color: #0f172a !important;
+            color: #f8fafc !important;
+        }
+
+        main {
+            background: transparent;
+            min-height: 100vh;
+        }
+
+        body.dark-theme main {
+            background: transparent !important;
+        }
+
+        /* Ensure no white backgrounds anywhere in dark mode */
+        body.dark-theme .container,
+        body.dark-theme .contact-container,
+        body.dark-theme .google-form-container {
+            background: transparent !important;
         }
 
         /* Scrollbar Styling */
@@ -73,6 +140,82 @@
         
         ::-webkit-scrollbar-thumb:hover {
             background: var(--secondary-color);
+        }
+
+        /* Enhanced Scroll-to-Top Button */
+        .scroll-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: var(--gradient-primary);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            box-shadow: 0 4px 20px rgba(14, 165, 233, 0.4);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(100px);
+            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            z-index: 999;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+
+        .scroll-top.visible {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .scroll-top:hover {
+            transform: translateY(-5px) scale(1.1);
+            box-shadow: 0 8px 30px rgba(14, 165, 233, 0.6);
+        }
+
+        .scroll-top:active {
+            transform: translateY(-2px) scale(1.05);
+        }
+
+        .scroll-top i {
+            animation: bounceUp 2s ease-in-out infinite;
+        }
+
+        @keyframes bounceUp {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-5px);
+            }
+        }
+
+        /* Scroll Progress Bar */
+        .scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3px;
+            background: var(--gradient-primary);
+            z-index: 1001;
+            transition: width 0.1s ease;
+            box-shadow: 0 2px 10px rgba(14, 165, 233, 0.5);
+        }
+
+        @media (max-width: 768px) {
+            .scroll-top {
+                bottom: 20px;
+                right: 20px;
+                width: 45px;
+                height: 45px;
+                font-size: 1.1rem;
+            }
         }
 
         /* Modern Header Styles */
@@ -1053,6 +1196,7 @@
             height: 40px;
             border-radius: 50%;
             background: rgba(255, 255, 255, 0.1);
+            border: none;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -1097,57 +1241,126 @@
             --text-primary: #f8fafc;
             --text-secondary: #cbd5e1;
             --bg-primary: #0f172a;
-            --bg-secondary: #1e293b;
+            --bg-secondary: #0f172a;
             --glass-bg: rgba(15, 23, 42, 0.95);
             --glass-border: rgba(255, 255, 255, 0.08);
             --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
             --card-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-            background-color: var(--bg-primary);
-            color: var(--text-primary);
+            background-color: #0f172a !important;
         }
 
         section {
-            padding: 8rem 2rem;
-            background: var(--section-bg-light);
+            padding: 5rem 0;
             position: relative;
             overflow: hidden;
             transition: background-color 0.5s ease, color 0.5s ease;
         }
 
-        body.dark-theme section {
-            background: var(--section-bg-dark);
+        section:last-child {
+            padding-bottom: 5rem;
+            margin-bottom: 0;
         }
 
-        section:nth-child(even) {
-            background: var(--section-bg-light-alt);
+        /* Dark mode - ensure sections extend to bottom */
+        body.dark-theme section:last-child {
+            padding-bottom: 5rem;
+            margin-bottom: 0;
         }
 
-        body.dark-theme section:nth-child(even) {
-            background: var(--section-bg-dark-alt);
-        }
+            /* Light mode pattern overlay */
+            body:not(.dark-theme) section::after {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-image: 
+                    radial-gradient(circle at 20% 50%, rgba(14, 165, 233, 0.03) 0%, transparent 50%),
+                    radial-gradient(circle at 80% 80%, rgba(59, 130, 246, 0.03) 0%, transparent 50%),
+                    radial-gradient(circle at 40% 20%, rgba(6, 182, 212, 0.02) 0%, transparent 50%);
+                z-index: 0;
+                pointer-events: none;
+            }
 
-        section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: var(--section-gradient-light);
-            z-index: -1;
-            opacity: 0.8;
-            transition: background 0.5s ease;
-        }
+            /* Light mode dot pattern */
+            body:not(.dark-theme) section:nth-child(odd)::after {
+                background-image: 
+                    repeating-linear-gradient(0deg, rgba(14, 165, 233, 0.03) 0px, transparent 1px, transparent 40px),
+                    repeating-linear-gradient(90deg, rgba(14, 165, 233, 0.03) 0px, transparent 1px, transparent 40px),
+                    radial-gradient(circle at 50% 50%, rgba(14, 165, 233, 0.05) 0%, transparent 70%);
+            }
 
-        body.dark-theme section::before {
-            background: var(--section-gradient-dark);
-        }
+            /* Enhanced light mode section borders */
+            body:not(.dark-theme) section {
+                border-top: 1px solid rgba(14, 165, 233, 0.1);
+                box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5);
+            }
+
+            body:not(.dark-theme) section:nth-child(even) {
+                background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+            }
+
+            body:not(.dark-theme) section:nth-child(odd) {
+                background: linear-gradient(135deg, #f8fafc 0%, #f0f9ff 100%);
+            }
+
+            /* Dark mode section improvements - rich gradients */
+            body.dark-theme section {
+                background: linear-gradient(135deg, #0a0e1a 0%, #1a1f2e 100%) !important;
+                border-top: 1px solid rgba(14, 165, 233, 0.2);
+                border-bottom: 1px solid rgba(14, 165, 233, 0.1);
+                box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
+            }
+
+            body.dark-theme section:nth-child(even) {
+                background: linear-gradient(135deg, #1a1f2e 0%, #0f172a 100%) !important;
+                border-top: 1px solid rgba(59, 130, 246, 0.2);
+                border-bottom: 1px solid rgba(59, 130, 246, 0.1);
+            }
+
+            body.dark-theme section:last-child {
+                border-bottom: none;
+            }
+
+            /* Dark mode pattern overlays */
+            body.dark-theme section::after {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-image: 
+                    radial-gradient(circle at 20% 50%, rgba(14, 165, 233, 0.08) 0%, transparent 50%),
+                    radial-gradient(circle at 80% 80%, rgba(59, 130, 246, 0.08) 0%, transparent 50%),
+                    radial-gradient(circle at 40% 20%, rgba(6, 182, 212, 0.06) 0%, transparent 50%);
+                z-index: 0;
+                pointer-events: none;
+            }
+
+            /* Dark mode dot pattern on odd sections */
+            body.dark-theme section:nth-child(odd)::after {
+                background-image: 
+                    repeating-linear-gradient(0deg, rgba(14, 165, 233, 0.05) 0px, transparent 1px, transparent 40px),
+                    repeating-linear-gradient(90deg, rgba(14, 165, 233, 0.05) 0px, transparent 1px, transparent 40px),
+                    radial-gradient(circle at 50% 50%, rgba(14, 165, 233, 0.08) 0%, transparent 70%);
+            }
+
+            /* Dark mode decorators - enhanced visibility */
+            body.dark-theme .section-decorator {
+                opacity: 0.4;
+            }
+
+            body.dark-theme .section-decorator.top-right {
+                background: radial-gradient(circle, rgba(14, 165, 233, 0.25) 0%, rgba(59, 130, 246, 0.15) 50%, transparent 100%);
+            }
+
+            body.dark-theme .section-decorator.bottom-left {
+                background: radial-gradient(circle, rgba(6, 182, 212, 0.25) 0%, rgba(14, 165, 233, 0.15) 50%, transparent 100%);
+            }
 
         .section-title {
-            font-size: 2.5rem;
-            font-weight: 800;
-            color: var(--section-title-light);
-            margin-bottom: 4rem;
             text-align: center;
             letter-spacing: -0.5px;
             position: relative;
@@ -1157,6 +1370,21 @@
 
         body.dark-theme .section-title {
             color: var(--section-title-dark);
+            text-shadow: 0 2px 10px rgba(14, 165, 233, 0.3);
+        }
+
+        /* Dark mode section title text glow */
+        body.dark-theme .section-title-text {
+            text-shadow: 0 2px 10px rgba(14, 165, 233, 0.3);
+        }
+
+        /* Dark mode section icon glow */
+        body.dark-theme .section-icon {
+            filter: drop-shadow(0 0 8px rgba(14, 165, 233, 0.5));
+        }
+
+        body.dark-theme .section-icon-container:hover .section-icon {
+            filter: drop-shadow(0 0 12px rgba(14, 165, 233, 0.8));
         }
 
         .section-title::after {
@@ -1196,6 +1424,20 @@
             transition: all 0.5s ease;
         }
 
+        /* Enhanced light mode decorators */
+        body:not(.dark-theme) .section-decorator {
+            background: linear-gradient(135deg, rgba(14, 165, 233, 0.15), rgba(59, 130, 246, 0.1));
+            opacity: 0.7;
+        }
+
+        body:not(.dark-theme) .section-decorator.top-right {
+            background: radial-gradient(circle, rgba(14, 165, 233, 0.2) 0%, rgba(59, 130, 246, 0.1) 50%, transparent 100%);
+        }
+
+        body:not(.dark-theme) .section-decorator.bottom-left {
+            background: radial-gradient(circle, rgba(6, 182, 212, 0.2) 0%, rgba(14, 165, 233, 0.1) 50%, transparent 100%);
+        }
+
         .section-decorator.top-right {
             top: -100px;
             right: -100px;
@@ -1219,7 +1461,156 @@
         }
 
         .section {
-            margin-bottom: 6rem;
+            margin-bottom: 0;
+            padding: 3rem 0;
+            position: relative;
+        }
+
+        /* Section Number Indicators */
+        .section::before {
+            counter-increment: section;
+        }
+
+        .container {
+            position: relative;
+        }
+
+        /* Enhanced Section Titles with Icons */
+        .section-title {
+            position: relative;
+            padding: 0 0 1.5rem 0;
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            gap: 2rem;
+            flex-wrap: wrap;
+            width: 100%;
+        }
+
+        .section-icon-container {
+            width: 70px;
+            height: 70px;
+            background: var(--gradient-primary);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 8px 25px rgba(14, 165, 233, 0.4);
+            position: relative;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .section-icon-container::before {
+            content: '';
+            position: absolute;
+            inset: -3px;
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color), var(--accent-color));
+            border-radius: 18px;
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .section:hover .section-icon-container::before {
+            opacity: 1;
+            animation: borderRotate 3s linear infinite;
+        }
+
+        @keyframes borderRotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .section-icon {
+            font-size: 2rem;
+            color: white;
+            transition: all 0.3s ease;
+        }
+
+        .section:hover .section-icon-container {
+            transform: translateY(-5px) scale(1.1);
+            box-shadow: 0 12px 35px rgba(14, 165, 233, 0.6);
+        }
+
+        /* Section-specific icon animations */
+        #summary .section-icon {
+            animation: iconRotate 4s ease-in-out infinite;
+        }
+
+        #experience .section-icon {
+            animation: iconBounce 2s ease-in-out infinite;
+        }
+
+        #skills .section-icon {
+            animation: iconPulse 2s ease-in-out infinite;
+        }
+
+        #published-apps .section-icon,
+        #sample-apps .section-icon {
+            animation: iconShake 3s ease-in-out infinite;
+        }
+
+        #education .section-icon {
+            animation: iconFlip 3s ease-in-out infinite;
+        }
+
+        #certifications .section-icon {
+            animation: iconGlow 2s ease-in-out infinite;
+        }
+
+        #achievements .section-icon {
+            animation: iconScale 2s ease-in-out infinite;
+        }
+
+        #languages .section-icon {
+            animation: iconRotateY 4s ease-in-out infinite;
+        }
+
+        @keyframes iconRotate {
+            0%, 100% { transform: rotate(0deg); }
+            25% { transform: rotate(-10deg); }
+            75% { transform: rotate(10deg); }
+        }
+
+        @keyframes iconBounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+        }
+
+        @keyframes iconPulse {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.1); opacity: 0.8; }
+        }
+
+        @keyframes iconShake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            75% { transform: translateX(5px); }
+        }
+
+        @keyframes iconFlip {
+            0%, 100% { transform: rotateY(0deg); }
+            50% { transform: rotateY(180deg); }
+        }
+
+        @keyframes iconGlow {
+            0%, 100% { filter: drop-shadow(0 0 5px rgba(14, 165, 233, 0.5)); }
+            50% { filter: drop-shadow(0 0 20px rgba(14, 165, 233, 1)); }
+        }
+
+        @keyframes iconScale {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.15); }
+        }
+
+        @keyframes iconRotateY {
+            0%, 100% { transform: rotateY(0deg); }
+            50% { transform: rotateY(360deg); }
+        }
+
+        .section-title-text {
+            flex: 0 1 auto;
         }
         
         /* Modern Summary Section Styles */
@@ -1237,8 +1628,35 @@
         }
         
         body.dark-theme .modern-card {
-            background: rgba(15, 23, 42, 0.5);
-            border: 1px solid rgba(255, 255, 255, 0.05);
+            background: linear-gradient(135deg, rgba(15, 23, 42, 0.9) 0%, rgba(30, 41, 59, 0.8) 100%) !important;
+            border: 1px solid rgba(14, 165, 233, 0.2) !important;
+            box-shadow: 
+                0 20px 40px rgba(0, 0, 0, 0.5),
+                0 0 0 1px rgba(255, 255, 255, 0.05) inset,
+                0 0 20px rgba(14, 165, 233, 0.1) !important;
+            backdrop-filter: blur(20px) saturate(180%);
+            -webkit-backdrop-filter: blur(20px) saturate(180%);
+        }
+
+        body.dark-theme .modern-card:hover {
+            background: linear-gradient(135deg, rgba(15, 23, 42, 0.95) 0%, rgba(30, 41, 59, 0.9) 100%) !important;
+            border-color: rgba(14, 165, 233, 0.4) !important;
+            box-shadow: 
+                0 30px 60px rgba(14, 165, 233, 0.3),
+                0 0 0 1px rgba(14, 165, 233, 0.2) inset,
+                0 0 30px rgba(14, 165, 233, 0.2) !important;
+        }
+
+        /* Enhanced light mode cards */
+        body:not(.dark-theme) .modern-card {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(248, 250, 252, 0.95) 100%) !important;
+            border: 1px solid rgba(14, 165, 233, 0.1) !important;
+            box-shadow: 0 20px 40px rgba(14, 165, 233, 0.08), 0 0 0 1px rgba(255, 255, 255, 0.5) inset !important;
+        }
+
+        body:not(.dark-theme) .modern-card:hover {
+            box-shadow: 0 30px 60px rgba(14, 165, 233, 0.15), 0 0 0 1px rgba(14, 165, 233, 0.2) inset !important;
+            border-color: rgba(14, 165, 233, 0.2) !important;
         }
         
         .modern-card:hover {
@@ -1303,6 +1721,37 @@
             border: 1px solid rgba(255, 255, 255, 0.1);
             min-width: 180px;
             transition: all 0.3s ease;
+        }
+
+        /* Dark mode statistics cards */
+        body.dark-theme .stat-item {
+            background: linear-gradient(135deg, rgba(15, 23, 42, 0.9) 0%, rgba(30, 41, 59, 0.8) 100%) !important;
+            border: 1px solid rgba(14, 165, 233, 0.2) !important;
+            box-shadow: 
+                0 4px 15px rgba(0, 0, 0, 0.5),
+                0 0 0 1px rgba(255, 255, 255, 0.05) inset,
+                0 0 15px rgba(14, 165, 233, 0.1) !important;
+        }
+
+        body.dark-theme .stat-item:hover {
+            background: linear-gradient(135deg, rgba(15, 23, 42, 0.95) 0%, rgba(30, 41, 59, 0.9) 100%) !important;
+            border-color: rgba(14, 165, 233, 0.4) !important;
+            box-shadow: 
+                0 8px 20px rgba(14, 165, 233, 0.3),
+                0 0 0 1px rgba(14, 165, 233, 0.2) inset,
+                0 0 20px rgba(14, 165, 233, 0.2) !important;
+        }
+
+        /* Light mode statistics cards */
+        body:not(.dark-theme) .stat-item {
+            background: rgba(255, 255, 255, 0.9) !important;
+            border: 1px solid rgba(14, 165, 233, 0.1) !important;
+            box-shadow: 0 4px 15px rgba(14, 165, 233, 0.08) !important;
+        }
+
+        body:not(.dark-theme) .stat-item:hover {
+            background: rgba(255, 255, 255, 1) !important;
+            box-shadow: 0 8px 20px rgba(14, 165, 233, 0.15) !important;
         }
         
         .stat-item:hover {
@@ -1393,19 +1842,67 @@
             background: var(--glass-bg);
             backdrop-filter: blur(8px);
             -webkit-backdrop-filter: blur(8px);
-            margin-bottom: 2rem;
-            padding: 2rem;
-            border-radius: 16px;
             border: 1px solid var(--glass-border);
-            box-shadow: var(--glass-shadow);
-            transition: all 0.3s ease;
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             position: relative;
             overflow: hidden;
         }
 
+        .skill-category::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(14, 165, 233, 0.05), rgba(59, 130, 246, 0.05));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+        }
+
+        .skill-category:hover::after {
+            opacity: 1;
+        }
+
+        /* Dark mode skill cards */
+        body.dark-theme .skill-category {
+            background: linear-gradient(135deg, rgba(15, 23, 42, 0.9) 0%, rgba(30, 41, 59, 0.8) 100%) !important;
+            border: 1px solid rgba(14, 165, 233, 0.2) !important;
+            box-shadow: 
+                0 8px 20px rgba(0, 0, 0, 0.5),
+                0 0 0 1px rgba(255, 255, 255, 0.05) inset,
+                0 0 20px rgba(14, 165, 233, 0.1) !important;
+        }
+
+        body.dark-theme .skill-category:hover {
+            background: linear-gradient(135deg, rgba(15, 23, 42, 0.95) 0%, rgba(30, 41, 59, 0.9) 100%) !important;
+            border-color: rgba(14, 165, 233, 0.4) !important;
+            box-shadow: 
+                0 15px 40px rgba(14, 165, 233, 0.3),
+                0 0 0 1px rgba(14, 165, 233, 0.2) inset,
+                0 0 30px rgba(14, 165, 233, 0.2) !important;
+        }
+
+        /* Enhanced light mode skill cards */
+        body:not(.dark-theme) .skill-category {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(248, 250, 252, 0.98) 100%);
+            border: 1px solid rgba(14, 165, 233, 0.15);
+            box-shadow: 0 8px 20px rgba(14, 165, 233, 0.08), 0 0 0 1px rgba(255, 255, 255, 0.5) inset;
+        }
+
+        body:not(.dark-theme) .skill-category:hover {
+            box-shadow: 0 15px 40px rgba(14, 165, 233, 0.15), 0 0 0 1px rgba(14, 165, 233, 0.2) inset;
+            border-color: rgba(14, 165, 233, 0.3);
+        }
+
         .skill-category:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--card-shadow);
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 15px 40px rgba(14, 165, 233, 0.2);
+            border-color: rgba(14, 165, 233, 0.3);
         }
 
         .skill-category::before {
@@ -1650,7 +2147,27 @@
                 width: 100%;
             }
 
+            .section {
+                padding: 2rem 0;
+            }
+
             .section-title {
+                font-size: 1.75rem;
+                gap: 1.5rem;
+                padding: 0 0 1rem 0;
+                margin-bottom: 1.5rem;
+            }
+
+            .section-icon-container {
+                width: 55px;
+                height: 55px;
+            }
+
+            .section-icon {
+                font-size: 1.5rem;
+            }
+
+            .section-title-text {
                 font-size: 1.75rem;
             }
             
@@ -1830,6 +2347,30 @@
             backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.05);
             transform-style: preserve-3d;
+        }
+
+        /* Dark mode app cards */
+        body.dark-theme .app-card {
+            background: linear-gradient(135deg, rgba(15, 23, 42, 0.9) 0%, rgba(30, 41, 59, 0.8) 100%) !important;
+            border: 1px solid rgba(14, 165, 233, 0.2) !important;
+            box-shadow: 
+                0 15px 35px rgba(0, 0, 0, 0.5),
+                0 0 0 1px rgba(255, 255, 255, 0.05) inset,
+                0 0 20px rgba(14, 165, 233, 0.1) !important;
+        }
+
+        body.dark-theme .app-card:hover {
+            background: linear-gradient(135deg, rgba(15, 23, 42, 0.95) 0%, rgba(30, 41, 59, 0.9) 100%) !important;
+            border-color: rgba(14, 165, 233, 0.4) !important;
+            box-shadow: 
+                0 20px 40px rgba(14, 165, 233, 0.3),
+                0 0 0 1px rgba(14, 165, 233, 0.2) inset,
+                0 0 30px rgba(14, 165, 233, 0.2) !important;
+        }
+
+        body.dark-theme .app-content {
+            background: linear-gradient(135deg, rgba(15, 23, 42, 0.7) 0%, rgba(30, 41, 59, 0.6) 100%) !important;
+            border-top: 1px solid rgba(14, 165, 233, 0.2) !important;
         }
 
         .app-card.dimmed {
@@ -2268,19 +2809,6 @@
             margin-bottom: 0.5rem;
         }
 
-        /* Footer */
-        footer {
-            background: var(--text-primary);
-            color: white;
-            padding: 4rem 2rem;
-            text-align: center;
-        }
-
-        footer p {
-            opacity: 0.8;
-            max-width: 600px;
-            margin: 0 auto;
-        }
 
         /* Responsive Design */
         @media (max-width: 768px) {
@@ -2292,8 +2820,24 @@
                 font-size: 1.2rem;
             }
 
+            .section {
+                padding: 2.5rem 0;
+            }
+
             .section-title {
                 font-size: 2rem;
+                gap: 1.75rem;
+                padding: 0 0 1.25rem 0;
+                margin-bottom: 1.75rem;
+            }
+
+            .section-icon-container {
+                width: 60px;
+                height: 60px;
+            }
+
+            .section-icon {
+                font-size: 1.75rem;
             }
 
             .nav-links {
@@ -2373,8 +2917,77 @@
         .experience-item {
             margin-bottom: 3rem;
             position: relative;
-            padding-left: 2rem;
+            padding-left: 3rem;
             border-left: 3px solid var(--primary-color);
+            background: var(--bg-primary);
+            padding: 2rem;
+            padding-left: 3rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .experience-item::before {
+            content: '';
+            position: absolute;
+            left: -9px;
+            top: 2rem;
+            width: 18px;
+            height: 18px;
+            background: var(--primary-color);
+            border-radius: 50%;
+            border: 3px solid var(--bg-secondary);
+            box-shadow: 0 0 0 3px var(--primary-color);
+            z-index: 1;
+        }
+
+        .experience-item:hover {
+            transform: translateX(10px);
+            box-shadow: 0 8px 25px rgba(14, 165, 233, 0.15);
+        }
+
+        /* Dark mode experience cards */
+        body.dark-theme .experience-item {
+            background: linear-gradient(135deg, rgba(15, 23, 42, 0.9) 0%, rgba(30, 41, 59, 0.8) 100%) !important;
+            border-left-color: var(--primary-color) !important;
+            box-shadow: 
+                0 4px 15px rgba(0, 0, 0, 0.5),
+                0 0 0 1px rgba(255, 255, 255, 0.05) inset,
+                0 0 15px rgba(14, 165, 233, 0.1) !important;
+            border: 1px solid rgba(14, 165, 233, 0.2) !important;
+            border-left: 3px solid var(--primary-color) !important;
+        }
+
+        body.dark-theme .experience-item:hover {
+            background: linear-gradient(135deg, rgba(15, 23, 42, 0.95) 0%, rgba(30, 41, 59, 0.9) 100%) !important;
+            border-color: rgba(14, 165, 233, 0.3) !important;
+            box-shadow: 
+                0 8px 25px rgba(14, 165, 233, 0.3),
+                0 0 0 1px rgba(14, 165, 233, 0.2) inset,
+                0 0 25px rgba(14, 165, 233, 0.2) !important;
+        }
+
+        body.dark-theme .experience-item::before {
+            background: var(--primary-color) !important;
+            border-color: rgba(15, 23, 42, 1) !important;
+        }
+
+        /* Enhanced light mode experience cards */
+        body:not(.dark-theme) .experience-item {
+            background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+            border-left-color: var(--primary-color);
+            box-shadow: 0 4px 15px rgba(14, 165, 233, 0.1), 0 0 0 1px rgba(255, 255, 255, 0.5) inset;
+        }
+
+        body:not(.dark-theme) .experience-item:hover {
+            box-shadow: 0 8px 25px rgba(14, 165, 233, 0.2), 0 0 0 1px rgba(14, 165, 233, 0.1) inset;
+            border-left-color: var(--secondary-color);
+        }
+
+        body:not(.dark-theme) .experience-item::before {
+            background: var(--primary-color);
+            border-color: #ffffff;
+            box-shadow: 0 0 0 3px var(--primary-color), 0 0 0 6px rgba(14, 165, 233, 0.2);
         }
 
         .experience-item:last-child {
@@ -2386,6 +2999,25 @@
             font-weight: 600;
             color: var(--primary-color);
             margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .experience-company::after {
+            content: 'Current';
+            font-size: 0.75rem;
+            padding: 0.25rem 0.75rem;
+            background: linear-gradient(135deg, #10B981, #059669);
+            color: white;
+            border-radius: 12px;
+            font-weight: 500;
+            display: none;
+        }
+
+        .experience-item:first-child .experience-company::after {
+            display: inline-block;
         }
 
         .experience-location {
@@ -2945,6 +3577,45 @@
             box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
         }
 
+        /* Dark mode education, achievement, and language cards */
+        body.dark-theme .education-card,
+        body.dark-theme .achievement-card,
+        body.dark-theme .language-card {
+            background: linear-gradient(135deg, rgba(15, 23, 42, 0.9) 0%, rgba(30, 41, 59, 0.8) 100%) !important;
+            border: 1px solid rgba(14, 165, 233, 0.2) !important;
+            box-shadow: 
+                0 4px 15px rgba(0, 0, 0, 0.5),
+                0 0 0 1px rgba(255, 255, 255, 0.05) inset,
+                0 0 15px rgba(14, 165, 233, 0.1) !important;
+        }
+
+        body.dark-theme .education-card:hover,
+        body.dark-theme .achievement-card:hover,
+        body.dark-theme .language-card:hover {
+            background: linear-gradient(135deg, rgba(15, 23, 42, 0.95) 0%, rgba(30, 41, 59, 0.9) 100%) !important;
+            border-color: rgba(14, 165, 233, 0.4) !important;
+            box-shadow: 
+                0 8px 25px rgba(14, 165, 233, 0.3),
+                0 0 0 1px rgba(14, 165, 233, 0.2) inset,
+                0 0 25px rgba(14, 165, 233, 0.2) !important;
+        }
+
+        /* Enhanced light mode education and achievement cards */
+        body:not(.dark-theme) .education-card,
+        body:not(.dark-theme) .achievement-card,
+        body:not(.dark-theme) .language-card {
+            background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+            box-shadow: 0 4px 15px rgba(14, 165, 233, 0.08), 0 0 0 1px rgba(255, 255, 255, 0.5) inset;
+            border: 1px solid rgba(14, 165, 233, 0.1);
+        }
+
+        body:not(.dark-theme) .education-card:hover,
+        body:not(.dark-theme) .achievement-card:hover,
+        body:not(.dark-theme) .language-card:hover {
+            box-shadow: 0 8px 25px rgba(14, 165, 233, 0.15), 0 0 0 1px rgba(14, 165, 233, 0.15) inset;
+            border-color: rgba(14, 165, 233, 0.2);
+        }
+
         .education-card h3 {
             color: var(--primary-color);
             font-size: 1.5rem;
@@ -3130,6 +3801,50 @@
 
         .language-item {
             margin-bottom: 1.5rem;
+            padding: 1.5rem;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(248, 250, 252, 0.95) 100%);
+            border-radius: 12px;
+            border: 1px solid rgba(14, 165, 233, 0.15);
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(14, 165, 233, 0.08), 0 0 0 1px rgba(255, 255, 255, 0.5) inset;
+        }
+
+        .language-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(14, 165, 233, 0.15), 0 0 0 1px rgba(255, 255, 255, 0.5) inset;
+            border-color: rgba(14, 165, 233, 0.25);
+        }
+
+        /* Dark mode language items */
+        body.dark-theme .language-item {
+            background: linear-gradient(135deg, rgba(15, 23, 42, 0.9) 0%, rgba(30, 41, 59, 0.8) 100%) !important;
+            border: 1px solid rgba(14, 165, 233, 0.2) !important;
+            box-shadow: 
+                0 4px 15px rgba(0, 0, 0, 0.5),
+                0 0 0 1px rgba(255, 255, 255, 0.05) inset,
+                0 0 15px rgba(14, 165, 233, 0.1) !important;
+        }
+
+        body.dark-theme .language-item:hover {
+            background: linear-gradient(135deg, rgba(15, 23, 42, 0.95) 0%, rgba(30, 41, 59, 0.9) 100%) !important;
+            border-color: rgba(14, 165, 233, 0.4) !important;
+            box-shadow: 
+                0 8px 25px rgba(14, 165, 233, 0.3),
+                0 0 0 1px rgba(14, 165, 233, 0.2) inset,
+                0 0 25px rgba(14, 165, 233, 0.2) !important;
+            transform: translateY(-2px);
+        }
+
+        /* Light mode language items - explicit */
+        body:not(.dark-theme) .language-item {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(248, 250, 252, 0.95) 100%) !important;
+            border: 1px solid rgba(14, 165, 233, 0.15) !important;
+            box-shadow: 0 4px 15px rgba(14, 165, 233, 0.08), 0 0 0 1px rgba(255, 255, 255, 0.5) inset !important;
+        }
+
+        body:not(.dark-theme) .language-item:hover {
+            box-shadow: 0 8px 25px rgba(14, 165, 233, 0.15), 0 0 0 1px rgba(255, 255, 255, 0.5) inset !important;
+            border-color: rgba(14, 165, 233, 0.25) !important;
         }
 
         .language-header {
@@ -3159,11 +3874,27 @@
             border-radius: 1rem;
         }
 
+        /* Dark mode language level badge */
+        body.dark-theme .language-level {
+            background: rgba(14, 165, 233, 0.2) !important;
+            color: var(--primary-color) !important;
+        }
+
         .progress-bar {
             height: 8px;
-            background: rgba(10, 102, 194, 0.1);
+            background: rgba(14, 165, 233, 0.15);
             border-radius: 4px;
             overflow: hidden;
+        }
+
+        /* Light mode progress bar */
+        body:not(.dark-theme) .progress-bar {
+            background: rgba(14, 165, 233, 0.15) !important;
+        }
+
+        /* Dark mode progress bar */
+        body.dark-theme .progress-bar {
+            background: rgba(14, 165, 233, 0.2) !important;
         }
 
         .progress-fill {
@@ -3179,6 +3910,16 @@
             margin-top: 0.5rem;
             font-size: 0.9rem;
             color: var(--text-secondary);
+        }
+
+        .language-detail {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .language-detail i {
+            color: var(--primary-color);
         }
         
         @media (max-width: 768px) {
@@ -3569,12 +4310,39 @@
             margin-left: 0.3rem;
         }
     </style>
+    
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Moamen Abdelaal",
+      "jobTitle": "Senior Mobile Engineer",
+      "description": "Senior Mobile Engineer with 8+ years of expertise in Android, iOS, and Flutter development",
+      "url": "https://momenabdelaal.github.io/",
+      "sameAs": [
+        "https://www.linkedin.com/in/moamen-abdalaal-750813123/",
+        "https://github.com/momenabdelaal"
+      ],
+      "email": "bibomomen@gmail.com",
+      "telephone": "+201093860082",
+      "knowsAbout": ["Android Development", "iOS Development", "Flutter", "Kotlin", "Swift", "Dart", "Java", "Mobile Architecture", "MVVM", "MVI", "CI/CD"],
+      "alumniOf": {
+        "@type": "EducationalOrganization",
+        "name": "Higher institute of information technology"
+      },
+      "worksFor": {
+        "@type": "Organization",
+        "name": "Dsquares"
+      }
+    }
+    </script>
 </head>
 <body>
-    <button class="scroll-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+    <button class="scroll-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" aria-label="Scroll to top">
         <i class="fas fa-arrow-up"></i>
     </button>
-    <header>
+    <header role="banner" aria-label="Main header">
         <div class="particles-container">
             <div class="particles"></div>
         </div>
@@ -3626,19 +4394,19 @@
             </div>
         </div>
         <div class="header-icons" data-aos="fade-up" data-aos-delay="400">
-            <a href="tel:+201093860082" title="Phone" class="icon-link">
+            <a href="tel:+201093860082" title="Phone" class="icon-link" aria-label="Call phone number">
                 <i class="fas fa-phone"></i>
             </a>
-            <a href="mailto:bibomomen@gmail.com" title="Email" class="icon-link">
+            <a href="mailto:bibomomen@gmail.com" title="Email" class="icon-link" aria-label="Send email">
                 <i class="fas fa-envelope"></i>
             </a>
-            <a href="https://www.linkedin.com/in/moamen-abdalaal-750813123/" target="_blank" title="LinkedIn" class="icon-link">
+            <a href="https://www.linkedin.com/in/moamen-abdalaal-750813123/" target="_blank" rel="noopener noreferrer" title="LinkedIn" class="icon-link" aria-label="Visit LinkedIn profile">
                 <i class="fab fa-linkedin"></i>
             </a>
-            <a href="https://github.com/momenabdelaal" target="_blank" title="GitHub" class="icon-link">
+            <a href="https://github.com/momenabdelaal" target="_blank" rel="noopener noreferrer" title="GitHub" class="icon-link" aria-label="Visit GitHub profile">
                 <i class="fab fa-github"></i>
             </a>
-            <a href="assets/Moamen-Abdelaal-Senior-Mobile-Developer.pdf" download="Moamen-Abdelaal-Senior-Mobile-Developer.pdf" title="Download CV" class="icon-link cv-download">
+            <a href="assets/Moamen-Abdelaal-Senior-Mobile-Developer.pdf" download="Moamen-Abdelaal-Senior-Mobile-Developer.pdf" title="Download CV" class="icon-link cv-download" aria-label="Download CV as PDF">
                 <i class="fas fa-file-download"></i>
             </a>
         </div>
@@ -3652,14 +4420,14 @@
         </div>
     </header>
 
-    <nav class="navbar">
+    <nav class="navbar" role="navigation" aria-label="Main navigation">
         <div class="nav-container">
-            <a href="#" class="nav-brand">
+            <a href="#" class="nav-brand" aria-label="Moamen Abdelaal - Home">
                 <span class="brand-text">MOAMEN</span>
                 <span class="brand-highlight">ABDELAAL</span>
             </a>
             <div class="nav-menu-container">
-                <ul class="nav-links">
+                <ul class="nav-links" role="menubar">
                     <li><a href="#summary" class="nav-link"><span>About</span></a></li>
                     <li><a href="#experience" class="nav-link"><span>Experience</span></a></li>
                     <li><a href="#skills" class="nav-link"><span>Skills</span></a></li>
@@ -3668,9 +4436,9 @@
                     <li><a href="#education" class="nav-link"><span>Education</span></a></li>
                     <li><a href="#certifications" class="nav-link"><span>Certifications</span></a></li>
                 </ul>
-                <div class="theme-toggle">
+                <button class="theme-toggle" aria-label="Toggle dark/light theme">
                     <i class="fas fa-moon"></i>
-                </div>
+                </button>
             </div>
         </div>
     </nav>
@@ -3680,7 +4448,12 @@
             <div class="section-decorator top-right"></div>
             <div class="section-decorator bottom-left"></div>
             <div class="container">
-                <h2 class="section-title" data-aos="fade-up">About Me</h2>
+                <h2 class="section-title" data-aos="fade-up">
+                    <div class="section-icon-container">
+                        <i class="section-icon fas fa-user-circle"></i>
+                    </div>
+                    <span class="section-title-text">About Me</span>
+                </h2>
                 <div class="modern-card" data-aos="fade-up">
                     <div class="summary-content">
                         <div class="summary-header">
@@ -3727,14 +4500,19 @@
 
         <section id="experience" class="section">
             <div class="container">
-                <h2 class="section-title" data-aos="fade-up">Work Experience</h2>
+                <h2 class="section-title" data-aos="fade-up">
+                    <div class="section-icon-container">
+                        <i class="section-icon fas fa-briefcase"></i>
+                    </div>
+                    <span class="section-title-text">Work Experience</span>
+                </h2>
                 <div class="experience-container">
                     <!-- Dsquares -->
                     <div class="experience-item" data-aos="fade-up">
                         <div class="experience-company">Dsquares</div>
                         <div class="experience-location">
                             <i class="fas fa-map-marker-alt"></i>
-                            Samrt Village, Cairo, Egypt | 2025 – Present
+                            Smart Village, Cairo, Egypt | 2025 – Present
                         </div>
 
                         <div class="experience-role">Senior Mobile Engineer</div>
@@ -3813,7 +4591,12 @@
 
         <section id="skills" class="section">
             <div class="container">
-                <h2 class="section-title" data-aos="fade-up">Skills</h2>
+                <h2 class="section-title" data-aos="fade-up">
+                    <div class="section-icon-container">
+                        <i class="section-icon fas fa-code"></i>
+                    </div>
+                    <span class="section-title-text">Skills</span>
+                </h2>
                 <div class="skills-grid">
                     <div class="skill-category" data-aos="fade-up">
                         <h3><i class="fas fa-laptop-code"></i> Core Development</h3>
@@ -3894,7 +4677,12 @@
         <!-- Published Apps Section with RTL Slider -->
 <section id="published-apps" class="section">
     <div class="container">
-        <h2 class="section-title" data-aos="fade-up">Published Apps</h2>
+        <h2 class="section-title" data-aos="fade-up">
+            <div class="section-icon-container">
+                <i class="section-icon fas fa-mobile-alt"></i>
+            </div>
+            <span class="section-title-text">Published Apps</span>
+        </h2>
         
         <!-- Android Apps Section -->
         <h3 class="platform-title" data-aos="fade-up"><i class="fab fa-android"></i> Android Applications</h3>
@@ -4315,7 +5103,12 @@
 
         <section id="sample-apps" class="section">
             <div class="container">
-                <h2 class="section-title" data-aos="fade-up">Sample Apps</h2>
+                <h2 class="section-title" data-aos="fade-up">
+                    <div class="section-icon-container">
+                        <i class="section-icon fas fa-flask"></i>
+                    </div>
+                    <span class="section-title-text">Sample Apps</span>
+                </h2>
                 
                 <!-- Android Sample Apps -->
                 <h3 class="platform-title" data-aos="fade-up"><i class="fab fa-android"></i> Android Sample Projects</h3>
@@ -4382,7 +5175,12 @@
 
         <section id="education" class="section">
             <div class="container">
-                <h2 class="section-title" data-aos="fade-up">Education</h2>
+                <h2 class="section-title" data-aos="fade-up">
+                    <div class="section-icon-container">
+                        <i class="section-icon fas fa-graduation-cap"></i>
+                    </div>
+                    <span class="section-title-text">Education</span>
+                </h2>
                 <div class="education-card" data-aos="fade-up">
                     <h3><i class="fas fa-graduation-cap"></i> Academic Background</h3>
                     <div class="institution">
@@ -4400,7 +5198,12 @@
 
         <section id="certifications" class="section">
             <div class="container">
-                <h2 class="section-title" data-aos="fade-up">Professional Certifications</h2>
+                <h2 class="section-title" data-aos="fade-up">
+                    <div class="section-icon-container">
+                        <i class="section-icon fas fa-certificate"></i>
+                    </div>
+                    <span class="section-title-text">Professional Certifications</span>
+                </h2>
                 <div class="education-card" data-aos="fade-up">
                     <h3><i class="fas fa-certificate"></i> Technical Certifications</h3>
                     <ul class="certifications-list">
@@ -4455,7 +5258,12 @@
 
         <section id="achievements" class="section">
             <div class="container">
-                <h2 class="section-title" data-aos="fade-up">Achievements</h2>
+                <h2 class="section-title" data-aos="fade-up">
+                    <div class="section-icon-container">
+                        <i class="section-icon fas fa-trophy"></i>
+                    </div>
+                    <span class="section-title-text">Achievements</span>
+                </h2>
 
                 <div class="achievement-card" data-aos="fade-up">
                     <div class="achievement-title">
@@ -4494,7 +5302,12 @@
 
         <section id="languages" class="section">
             <div class="container">
-                <h2 class="section-title" data-aos="fade-up">Languages</h2>
+                <h2 class="section-title" data-aos="fade-up">
+                    <div class="section-icon-container">
+                        <i class="section-icon fas fa-language"></i>
+                    </div>
+                    <span class="section-title-text">Languages</span>
+                </h2>
                 <div class="language-card" data-aos="fade-up">
                     <div class="language-item">
                         <div class="language-header">
@@ -4639,6 +5452,10 @@
         .contact-section {
             padding: 5rem 2rem;
             background: var(--bg-secondary);
+        }
+
+        body.dark-theme .contact-section {
+            background: linear-gradient(135deg, #0a0e1a 0%, #1a1f2e 100%) !important;
         }
 
         .contact-container {
