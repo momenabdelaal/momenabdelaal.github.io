@@ -1,0 +1,95 @@
+<svg width="1200" height="630" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background Gradient -->
+  <defs>
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a0a1e;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1e1e3c;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="accentGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#0ea5e9;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#3b82f6;stop-opacity:1" />
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#bgGradient)"/>
+  
+  <!-- Decorative Elements -->
+  <circle cx="100" cy="100" r="150" fill="#0ea5e9" opacity="0.05"/>
+  <circle cx="1100" cy="530" r="200" fill="#3b82f6" opacity="0.05"/>
+  <rect x="850" y="50" width="300" height="300" fill="#06b6d4" opacity="0.03" rx="20" transform="rotate(15 1000 200)"/>
+  
+  <!-- Grid Pattern -->
+  <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+    <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#0ea5e9" stroke-width="0.5" opacity="0.1"/>
+  </pattern>
+  <rect width="1200" height="630" fill="url(#grid)"/>
+  
+  <!-- Main Content Container -->
+  <rect x="80" y="120" width="1040" height="390" fill="rgba(15, 23, 42, 0.6)" rx="20" stroke="url(#accentGradient)" stroke-width="2"/>
+  
+  <!-- Icon/Badge -->
+  <circle cx="180" cy="240" r="60" fill="url(#accentGradient)" filter="url(#glow)"/>
+  <text x="180" y="260" font-family="Arial, sans-serif" font-size="50" fill="white" text-anchor="middle">👨‍💻</text>
+  
+  <!-- Name -->
+  <text x="280" y="200" font-family="Inter, Arial, sans-serif" font-size="56" font-weight="800" fill="white" letter-spacing="-1">
+    Moamen Abdelaal
+  </text>
+  
+  <!-- Title -->
+  <text x="280" y="260" font-family="Inter, Arial, sans-serif" font-size="36" font-weight="600" fill="#0ea5e9">
+    Senior Mobile Engineer
+  </text>
+  
+  <!-- Divider Line -->
+  <line x1="280" y1="285" x2="520" y2="285" stroke="url(#accentGradient)" stroke-width="3" stroke-linecap="round"/>
+  
+  <!-- Tech Stack Pills -->
+  <g transform="translate(280, 320)">
+    <!-- Android -->
+    <rect x="0" y="0" width="140" height="45" rx="22.5" fill="rgba(14, 165, 233, 0.2)" stroke="#0ea5e9" stroke-width="1.5"/>
+    <text x="25" y="30" font-family="Arial, sans-serif" font-size="20" fill="#0ea5e9">📱</text>
+    <text x="50" y="30" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="600" fill="white">Android</text>
+    
+    <!-- iOS -->
+    <rect x="155" y="0" width="100" height="45" rx="22.5" fill="rgba(59, 130, 246, 0.2)" stroke="#3b82f6" stroke-width="1.5"/>
+    <text x="180" y="30" font-family="Arial, sans-serif" font-size="20" fill="#3b82f6">🍎</text>
+    <text x="205" y="30" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="600" fill="white">iOS</text>
+    
+    <!-- Flutter -->
+    <rect x="270" y="0" width="120" height="45" rx="22.5" fill="rgba(6, 182, 212, 0.2)" stroke="#06b6d4" stroke-width="1.5"/>
+    <text x="295" y="30" font-family="Arial, sans-serif" font-size="20" fill="#06b6d4">🦋</text>
+    <text x="320" y="30" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="600" fill="white">Flutter</text>
+  </g>
+  
+  <!-- Stats -->
+  <g transform="translate(280, 400)">
+    <!-- Years Experience -->
+    <text x="0" y="0" font-family="Inter, Arial, sans-serif" font-size="32" font-weight="700" fill="#0ea5e9">8+</text>
+    <text x="0" y="25" font-family="Inter, Arial, sans-serif" font-size="14" fill="#94a3b8">Years Experience</text>
+    
+    <!-- Crash-Free Rate -->
+    <text x="180" y="0" font-family="Inter, Arial, sans-serif" font-size="32" font-weight="700" fill="#0ea5e9">95%</text>
+    <text x="180" y="25" font-family="Inter, Arial, sans-serif" font-size="14" fill="#94a3b8">Crash-Free Rate</text>
+    
+    <!-- Projects -->
+    <text x="380" y="0" font-family="Inter, Arial, sans-serif" font-size="32" font-weight="700" fill="#0ea5e9">20+</text>
+    <text x="380" y="25" font-family="Inter, Arial, sans-serif" font-size="14" fill="#94a3b8">Projects Delivered</text>
+  </g>
+  
+  <!-- Footer -->
+  <text x="600" y="590" font-family="Inter, Arial, sans-serif" font-size="16" fill="#64748b" text-anchor="middle">
+    momenabdelaal.github.io
+  </text>
+  
+  <!-- Decorative Code Brackets -->
+  <text x="950" y="200" font-family="monospace" font-size="120" fill="#0ea5e9" opacity="0.1" font-weight="300">&lt;/&gt;</text>
+</svg>
